@@ -1,0 +1,71 @@
+.menu-bar {
+  height: calc(100vh - 92px);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1rem;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.logo-field {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: rgba(28, 17, 41, 0.88);
+}
+
+.sider {
+  color: #fff;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-theme-btn {
+  position: absolute;
+  bottom: 16px;
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ttb-expanded {
+  left: 70px;
+}
+
+/* Collapsed state */
+.ttb-collapsed {
+  left: 50%; /* Center the button horizontally when collapsed */
+  transform: translateX(32%); /* Center alignment using transform */
+}
+
+.dark-mode {
+  background-color: white;
+  color: black;
+}
+
+.light-mode {
+  background-color: #08142c;
+  color: white;
+}
+
+.collapse-btn {
+  margin-left: 15px;
+}

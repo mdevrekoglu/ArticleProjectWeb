@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import SideBar from './commonComponents/SideBar';
+import { Outlet } from 'react-router';
+import I18nProvider from './i18n';
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
+  const [locale, setLocale] = useState('tr');
+
+  const toggleDarkTheme = () => {
+    setDarkTheme(!darkTheme);
+  };
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
+  const switchLocale = (newLocale: string) => {
+    setLocale(newLocale);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nProvider locale={locale}>
+      <SideBar
+        darkTheme={darkTheme}
+        toggleTheme={toggleDarkTheme}
+        collapsed={collapsed}
+        toggleCollapsed={toggleCollapsed}
+      />
+      <Outlet />
+    </I18nProvider>
   );
 }
 
