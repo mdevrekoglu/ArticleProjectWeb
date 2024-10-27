@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SelectDomain from './components/SelectDomain';
 import { Domains } from '../enum';
+import DeuPatternBackground from './components/DeuPatternBackground';
+import DeuLogo from '../../assets/DeuLogo.png';
 
 const Login = () => {
   const [domain, setDomain] = useState(Domains.Student);
@@ -23,6 +25,10 @@ const Login = () => {
 
   return (
     <div className='basic-container'>
+      <div className='background-layer'>
+        <DeuPatternBackground />
+      </div>
+
       <Form
         name='normal_login'
         className='login-form'
@@ -31,6 +37,10 @@ const Login = () => {
         }}
         onFinish={onFinish}
       >
+        <div className='logo-container'>
+          <img src={DeuLogo} className='school-logo' alt='' />
+        </div>
+
         <Form.Item
           name='email'
           rules={[

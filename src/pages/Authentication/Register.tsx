@@ -6,6 +6,8 @@ import authenticationResources from './messages';
 import SelectDomain from './components/SelectDomain';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import DeuPatternBackground from './components/DeuPatternBackground';
+import DeuLogo from '../../assets/DeuLogo.png';
 
 const Register = () => {
   const intl = useIntl();
@@ -18,11 +20,18 @@ const Register = () => {
 
   return (
     <div className='basic-container'>
+      <div className='background-layer'>
+        <DeuPatternBackground />
+      </div>
       <Form
         name='normal_register'
         className='register-form'
         initialValues={{ remember: true }}
       >
+        <div className='logo-container'>
+          <img src={DeuLogo} className='school-logo' alt='' />
+        </div>
+
         <FormItem
           name='firstName'
           rules={[
