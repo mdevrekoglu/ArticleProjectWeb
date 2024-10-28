@@ -84,6 +84,30 @@ const authenticationResources = defineMessages({
   dontHaveAccount: {
     id: 'authenticationMessages.dontHaveAccount',
     defaultMessage: "Don't have an account?"
+  },
+  unableToLoginUnknownError: {
+    id: 'authenticationMessages.unableToLoginUnknownError',
+    defaultMessage: 'Unable to login, please try again later.'
+  },
+  loginSuccess: {
+    id: 'authenticationMessages.loginSuccess',
+    defaultMessage: 'Login Successful!'
+  },
+  loginFailed: {
+    id: 'authenticationMessages.loginFailed',
+    defaultMessage: 'Login Failed!'
+  },
+  unableToRegisterUnknownError: {
+    id: 'authenticationMessages.unableToRegisterUnknownError',
+    defaultMessage: 'Unable to register, please try again later.'
+  },
+  registerSuccess: {
+    id: 'authenticationMessages.registerSuccess',
+    defaultMessage: 'Register Successful!'
+  },
+  registerFailed: {
+    id: 'authenticationMessages.registerFailed',
+    defaultMessage: 'Register Failed!'
   }
 });
 

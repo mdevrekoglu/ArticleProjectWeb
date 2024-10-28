@@ -4,7 +4,12 @@ import Logo from './Logo';
 import MenuList from './MenuList';
 import ToggleThemeButton from './ToggleThemeButton';
 import './MenuStyles.css';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import {
+  LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
+} from '@ant-design/icons';
+import { UseAuth } from '../../../modules/AuthContext';
 
 const { Header, Sider } = Layout;
 
@@ -24,6 +29,8 @@ const SideBar: React.FC<SideBarProps> = ({
   const {
     token: { colorBgContainer }
   } = theme.useToken();
+
+  const { logout } = UseAuth();
 
   return (
     <Layout>
@@ -49,7 +56,12 @@ const SideBar: React.FC<SideBarProps> = ({
             className='collapse-btn'
             onClick={toggleCollapsed}
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          ></Button>
+          />
+          <Button
+            icon={<LogoutOutlined />}
+            className='log-out-btn'
+            onClick={logout}
+          />
         </Header>
       </Layout>
     </Layout>

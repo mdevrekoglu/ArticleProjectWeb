@@ -1,21 +1,88 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, notification } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import authenticationResources from './messages';
-import SelectDomain from './components/SelectDomain';
+import authenticationResources from '../messages';
+import SelectDomain from '../components/SelectDomain';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import DeuPatternBackground from './components/DeuPatternBackground';
-import DeuLogo from '../../assets/DeuLogo.png';
+import { Link, useNavigate } from 'react-router-dom';
+import DeuPatternBackground from '../components/DeuPatternBackground';
+import DeuLogo from '../../../assets/DeuLogo.png';
+import { UserTypes } from '../enums';
+import '../styles.css';
+import ApiService from '../../../modules/ApiService';
+import { userRegisterModel } from './models';
+import { messageOutputModel } from '../../../models/BaseModels';
 
 const Register = () => {
-  const intl = useIntl();
-  const [domain, setDomain] = useState('@ogr.deu.edu.tr');
+  const [userType, setUserType] = useState<UserTypes>(UserTypes.Student);
+  const [loading, setloading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const intl = useIntl();
+  const navigate = useNavigate();
 
-  const handleDomainChange = (value: string) => {
-    setDomain(value);
+  const handleDomainChange = (userType: UserTypes) => {
+    setUserType(userType);
+  };
+
+  const handleRegister = async (values: any) => {
+    setloading(true);
+
+    const registerData: userRegisterModel = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+      userType: userType
+    };
+
+    try {
+      const response = await ApiService.UsePost<
+        userRegisterModel,
+        messageOutputModel
+      >('/Authentication/Register', registerData);
+
+      if (response.isSuccessed) {
+        notification.success({
+          message: intl.formatMessage(authenticationResources.registerSuccess),
+          description: (
+            <div>
+              {response.messages.map((msg, index) => (
+                <li key={index}>{msg}</li>
+              ))}
+            </div>
+          ),
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '500px' }
+        });
+        navigate('/authentication/login');
+      } else {
+        notification.error({
+          message: intl.formatMessage(authenticationResources.registerFailed),
+          description: (
+            <div>
+              {response.messages.map((msg, index) => (
+                <div key={index}>{msg}</div>
+              ))}
+            </div>
+          ),
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '500px' }
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: intl.formatMessage(
+          authenticationResources.unableToRegisterUnknownError
+        ),
+        placement: 'topRight',
+        duration: 5
+      });
+    } finally {
+      setloading(false);
+    }
   };
 
   return (
@@ -27,6 +94,7 @@ const Register = () => {
         name='normal_register'
         className='register-form'
         initialValues={{ remember: true }}
+        onFinish={handleRegister}
       >
         <div className='logo-container'>
           <img src={DeuLogo} className='school-logo' alt='' />
@@ -168,7 +236,12 @@ const Register = () => {
         </FormItem>
 
         <FormItem>
-          <Button type='primary' htmlType='submit' className='form-button'>
+          <Button
+            type='primary'
+            htmlType='submit'
+            className='form-button'
+            loading={loading}
+          >
             {intl.formatMessage(authenticationResources.register)}
           </Button>
         </FormItem>
@@ -178,7 +251,7 @@ const Register = () => {
             {intl.formatMessage(authenticationResources.alreadyHaveAccount)}
           </span>
 
-          <Link to='/login'>
+          <Link to='/authentication/login'>
             {intl.formatMessage(authenticationResources.loginNow)}
           </Link>
         </Form.Item>

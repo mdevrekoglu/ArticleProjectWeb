@@ -1,26 +1,86 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import './styles.css';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
+import '../styles.css';
 import { useIntl } from 'react-intl';
-import authenticationResources from './messages';
+import authenticationResources from '../messages';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import SelectDomain from './components/SelectDomain';
-import { Domains } from '../enum';
-import DeuPatternBackground from './components/DeuPatternBackground';
-import DeuLogo from '../../assets/DeuLogo.png';
+import SelectDomain from '../components/SelectDomain';
+import { UserTypes } from '../enums';
+import DeuPatternBackground from '../components/DeuPatternBackground';
+import DeuLogo from '../../../assets/DeuLogo.png';
+import { userLogInModel, userLogInResponseModel } from './models';
+import ApiService from '../../../modules/ApiService';
+import { UseAuth } from '../../../modules/AuthContext';
 
 const Login = () => {
-  const [domain, setDomain] = useState(Domains.Student);
+  const [userType, setUserType] = useState<UserTypes>(UserTypes.Student);
+  const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const intl = useIntl();
+  const { login } = UseAuth();
 
-  const handleDomainChange = (value: Domains) => {
-    setDomain(value);
+  const handleDomainChange = (userType: UserTypes) => {
+    setUserType(userType);
   };
 
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+  const handleLogin = async (values: any) => {
+    setLoading(true);
+
+    const loginData: userLogInModel = {
+      email: values.email,
+      password: values.password,
+      userType: userType
+    };
+
+    try {
+      const response = await ApiService.UsePost<
+        userLogInModel,
+        userLogInResponseModel
+      >('/Authentication/Login', loginData);
+
+      if (response.isSuccessed) {
+        login(response.token);
+
+        notification.success({
+          message: intl.formatMessage(authenticationResources.loginSuccess),
+          description: (
+            <div>
+              {response.messages.map((msg, index) => (
+                <div key={index}>{msg}</div>
+              ))}
+            </div>
+          ),
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '500px' }
+        });
+      } else {
+        notification.error({
+          message: intl.formatMessage(authenticationResources.loginFailed),
+          description: (
+            <div>
+              {response.messages.map((msg, index) => (
+                <div key={index}>{msg}</div>
+              ))}
+            </div>
+          ),
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '500px' }
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: intl.formatMessage(
+          authenticationResources.unableToLoginUnknownError
+        ),
+        placement: 'topRight',
+        duration: 5
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,7 +95,7 @@ const Login = () => {
         initialValues={{
           remember: true
         }}
-        onFinish={onFinish}
+        onFinish={handleLogin}
       >
         <div className='logo-container'>
           <img src={DeuLogo} className='school-logo' alt='' />
@@ -96,7 +156,12 @@ const Login = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type='primary' htmlType='submit' className='form-button'>
+          <Button
+            type='primary'
+            htmlType='submit'
+            className='form-button'
+            loading={loading}
+          >
             {intl.formatMessage(authenticationResources.login)}
           </Button>
         </Form.Item>
@@ -106,7 +171,7 @@ const Login = () => {
             {intl.formatMessage(authenticationResources.dontHaveAccount)}
           </span>
 
-          <Link to='/register' className='register-now-link'>
+          <Link to='/authentication/register' className='register-now-link'>
             {intl.formatMessage(authenticationResources.registerNow)}
           </Link>
         </Form.Item>

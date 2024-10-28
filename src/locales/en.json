@@ -1,5 +1,6 @@
 {
   "app.welcomeMessage": "Welcome to the application",
   "app.login": "Login",
-  "app.logout": "Logout"
+  "app.logout": "Logout",
+  "authenticationMessages.login": "Log in"
 }
