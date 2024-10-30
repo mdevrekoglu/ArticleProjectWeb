@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import SideBar from './components/SideBar';
-import { Outlet } from 'react-router';
 import I18nProvider from './i18n';
+import { BrowserRouter } from 'react-router-dom';
+import MyRoutes from './routes/MyRoutes';
+import { AuthProvider } from './modules/AuthContext';
+import ThemeProvider from './theme/ThemeProvider';
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
-  const [collapsed, setCollapsed] = useState(false);
   const [locale, setLocale] = useState('en');
 
   useEffect(() => {
@@ -13,29 +13,17 @@ function App() {
     if (lang === 'en' || lang === 'tr') {
       setLocale(lang);
     }
-  }, []); // Empty dependency array to run this only once on component mount
-
-  const toggleDarkTheme = () => {
-    setDarkTheme(!darkTheme);
-  };
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
-  const switchLocale = (newLocale: string) => {
-    setLocale(newLocale);
-  };
+  }, []);
 
   return (
     <I18nProvider locale={locale}>
-      <SideBar
-        darkTheme={darkTheme}
-        toggleTheme={toggleDarkTheme}
-        collapsed={collapsed}
-        toggleCollapsed={toggleCollapsed}
-      />
-      <Outlet />
+      <BrowserRouter>
+        <ThemeProvider>
+          <AuthProvider>
+            <MyRoutes />
+          </AuthProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </I18nProvider>
   );
 }

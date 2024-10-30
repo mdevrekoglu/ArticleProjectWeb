@@ -4,6 +4,6 @@ export enum Domains {
 }
 
 export enum UserTypes {
-  Student = '@ogr.deu.edu.tr',
-  Lecturer = '@deu.edu.tr'
+  Student = 0,
+  Lecturer
 }

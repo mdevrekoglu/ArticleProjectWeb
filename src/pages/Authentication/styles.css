@@ -1,16 +1,28 @@
 .basic-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: var(--background-color);
 }
 
-.login-form {
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.form-layer {
+  position: relative;
+  z-index: 1;
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  background-color: var(--form-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -19,34 +31,18 @@
   width: 100%;
 }
 
-.password-forgot-link {
-  float: right;
-}
-
 .custom-form-item {
   justify-self: center;
 }
 
-.register-form {
+.basic-form {
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  background-color: var(--form-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.site-form-item-icon {
-  color: #4a4a4a;
-}
-
-.ant-input::placeholder {
-  font-weight: 600;
-  color: #4a4a4a;
-  opacity: 0.75;
-}
-
-:root {
-  --background-color: #f0f2f5;
-  --form-background-color: #ffffff;
+.password-forgot-link {
+  float: right;
 }

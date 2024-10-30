@@ -1,5 +1,5 @@
 import { FireFilled } from '@ant-design/icons';
-import './MenuStyles.css';
+import './styles.css';
 
 const Logo = () => {
   return (

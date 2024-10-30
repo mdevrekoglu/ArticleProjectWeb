@@ -1,0 +1,24 @@
+.dark-mode {
+  background-color: white;
+  color: black;
+}
+
+.light-mode {
+  background-color: #08142c;
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.school-logo {
+  width: 150px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10%;
+}
