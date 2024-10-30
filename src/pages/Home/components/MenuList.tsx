@@ -7,7 +7,7 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
-import './MenuStyles.css';
+import './styles.css';
 import { useIntl } from 'react-intl';
 import commonResources from '../messages';
 import { useNavigate } from 'react-router-dom';

@@ -51,9 +51,14 @@ class ApiService {
   }
 
   // useGet: Creates a GET request with generics
-  async UseGet<TResponse>(url: string): Promise<TResponse> {
+  async UseGet<TRequest, TResponse>(
+    url: string,
+    data: TRequest
+  ): Promise<TResponse> {
     try {
-      const response = await this.axiosInstance.get<TResponse>(url);
+      const response = await this.axiosInstance.get<TResponse>(url, {
+        params: data
+      });
       return response.data;
     } catch (error) {
       console.error('GET request error:', error);

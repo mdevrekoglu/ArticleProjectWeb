@@ -1,5 +1,6 @@
 export interface userRequestModel {
   email: string;
+  userType: number;
 }
 
 export interface userPasswordResetModel {

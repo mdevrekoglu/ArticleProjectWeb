@@ -3,6 +3,7 @@ import I18nProvider from './i18n';
 import { BrowserRouter } from 'react-router-dom';
 import MyRoutes from './routes/MyRoutes';
 import { AuthProvider } from './modules/AuthContext';
+import ThemeProvider from './theme/ThemeProvider';
 
 function App() {
   const [locale, setLocale] = useState('en');
@@ -17,9 +18,11 @@ function App() {
   return (
     <I18nProvider locale={locale}>
       <BrowserRouter>
-        <AuthProvider>
-          <MyRoutes />
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <MyRoutes />
+          </AuthProvider>
+        </ThemeProvider>
       </BrowserRouter>
     </I18nProvider>
   );

@@ -50,10 +50,9 @@
   left: 70px;
 }
 
-/* Collapsed state */
 .ttb-collapsed {
-  left: 50%; /* Center the button horizontally when collapsed */
-  transform: translateX(32%); /* Center alignment using transform */
+  left: 50%;
+  transform: translateX(32%);
 }
 
 .dark-mode {
@@ -68,4 +67,12 @@
 
 .collapse-btn {
   margin-left: 15px;
+}
+
+.log-out-btn {
+  position: absolute;
+  float: right;
+  right: 0;
+  margin-top: 15px;
+  margin-right: 10px;
 }

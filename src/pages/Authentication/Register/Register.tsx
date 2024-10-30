@@ -1,4 +1,4 @@
-import { Button, Form, Input, notification } from 'antd';
+import { Button, Form, Input, notification, theme } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
@@ -7,19 +7,22 @@ import SelectDomain from '../components/SelectDomain';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import DeuPatternBackground from '../components/DeuPatternBackground';
-import DeuLogo from '../../../assets/DeuLogo.png';
 import { UserTypes } from '../enums';
 import '../styles.css';
 import ApiService from '../../../modules/ApiService';
 import { userRegisterModel } from './models';
 import { messageOutputModel } from '../../../models/BaseModels';
+import ToggleThemeButton from '../../../components/ToggleThemeButton';
+import DeuLogo from '../../../components/DeuLogo';
 
+const { useToken } = theme;
 const Register = () => {
-  const [userType, setUserType] = useState<UserTypes>(UserTypes.Student);
+  const intl = useIntl();
+  const { token } = useToken();
+  const navigate = useNavigate();
   const [loading, setloading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const intl = useIntl();
-  const navigate = useNavigate();
+  const [userType, setUserType] = useState<UserTypes>(UserTypes.Student);
 
   const handleDomainChange = (userType: UserTypes) => {
     setUserType(userType);
@@ -92,13 +95,12 @@ const Register = () => {
       </div>
       <Form
         name='normal_register'
-        className='register-form'
+        className='basic-form'
         initialValues={{ remember: true }}
         onFinish={handleRegister}
+        style={{ backgroundColor: token.colorBgLayout }}
       >
-        <div className='logo-container'>
-          <img src={DeuLogo} className='school-logo' alt='' />
-        </div>
+        <DeuLogo />
 
         <FormItem
           name='firstName'
@@ -254,6 +256,10 @@ const Register = () => {
           <Link to='/authentication/login'>
             {intl.formatMessage(authenticationResources.loginNow)}
           </Link>
+        </Form.Item>
+
+        <Form.Item className='custom-form-item'>
+          <ToggleThemeButton />
         </Form.Item>
       </Form>
     </div>

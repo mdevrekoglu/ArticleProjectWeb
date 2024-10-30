@@ -108,6 +108,39 @@ const authenticationResources = defineMessages({
   registerFailed: {
     id: 'authenticationMessages.registerFailed',
     defaultMessage: 'Register Failed!'
+  },
+  sendPasswordResetEmail: {
+    id: 'authenticationMessages.sendPasswordResetEmail',
+    defaultMessage: 'Send Password Reset Email'
+  },
+  unableToSendPasswordResetEmail: {
+    id: 'authenticationMessages.unableToSendPasswordResetEmail',
+    defaultMessage:
+      'Unable to send password reset email, please try again later.'
+  },
+  sendPasswordResetEmailSuccess: {
+    id: 'authenticationMessages.sendPasswordResetEmailSuccess',
+    defaultMessage: 'Password Reset Email Sent!'
+  },
+  resendConfirmEmail: {
+    id: 'authenticationMessages.resendConfirmEmail',
+    defaultMessage: 'Resend Confirm Email'
+  },
+  unableToResendConfirmEmailUnknownError: {
+    id: 'authenticationMessages.unableToResendConfirmEmailUnknownError',
+    defaultMessage: 'Unable to resend confirm email, please try again later.'
+  },
+  resendConfirmEmailSuccess: {
+    id: 'authenticationMessages.ResendConfirmEmailSuccess',
+    defaultMessage: 'Confirm Email Sent!'
+  },
+  resendConfirmEmailFailed: {
+    id: 'authenticationMessages.resendConfirmEmailFailed',
+    defaultMessage: 'Resend Confirm Email Failed!'
+  },
+  sendPasswordResetEmailFailed: {
+    id: 'authenticationMessages.sendPasswordResetEmailFailed',
+    defaultMessage: 'Send Password Reset Email Failed!'
   }
 });
 

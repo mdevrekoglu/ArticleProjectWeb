@@ -1,8 +1,3 @@
-:root {
-  --background-color: #f0f2f5;
-  --form-background-color: #ffffff;
-}
-
 .basic-container {
   position: relative;
   width: 100vw;
@@ -20,25 +15,14 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: var(--background-color);
 }
 
 .form-layer {
   position: relative;
-  z-index: 1; /* Ensure form appears above the background */
+  z-index: 1;
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  background-color: var(--form-background-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.login-form {
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-  background-color: var(--form-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -47,50 +31,18 @@
   width: 100%;
 }
 
-.password-forgot-link {
-  float: right;
-}
-
 .custom-form-item {
   justify-self: center;
 }
 
-.register-form {
+.basic-form {
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  background-color: var(--form-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.site-form-item-icon {
-  color: #4a4a4a;
-}
-
-.ant-input::placeholder {
-  font-weight: 600;
-  color: #4a4a4a;
-  opacity: 0.75;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
-}
-
-.school-logo {
-  width: 150px;
-  height: auto;
-}
-
-.log-out-btn {
-  position: absolute;
+.password-forgot-link {
   float: right;
-  right: 0;
-  margin-top: 15px;
-  margin-right: 10px;
 }

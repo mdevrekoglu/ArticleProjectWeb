@@ -1,5 +1,5 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, notification } from 'antd';
+import { Button, Checkbox, Form, Input, notification, theme } from 'antd';
 import '../styles.css';
 import { useIntl } from 'react-intl';
 import authenticationResources from '../messages';
@@ -8,17 +8,20 @@ import { Link } from 'react-router-dom';
 import SelectDomain from '../components/SelectDomain';
 import { UserTypes } from '../enums';
 import DeuPatternBackground from '../components/DeuPatternBackground';
-import DeuLogo from '../../../assets/DeuLogo.png';
 import { userLogInModel, userLogInResponseModel } from './models';
 import ApiService from '../../../modules/ApiService';
 import { UseAuth } from '../../../modules/AuthContext';
+import ToggleThemeButton from '../../../components/ToggleThemeButton';
+import DeuLogo from '../../../components/DeuLogo';
 
+const { useToken } = theme;
 const Login = () => {
   const [userType, setUserType] = useState<UserTypes>(UserTypes.Student);
-  const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const intl = useIntl();
+  const [loading, setLoading] = useState(false);
+  const { token } = useToken();
   const { login } = UseAuth();
+  const intl = useIntl();
 
   const handleDomainChange = (userType: UserTypes) => {
     setUserType(userType);
@@ -91,15 +94,14 @@ const Login = () => {
 
       <Form
         name='normal_login'
-        className='login-form'
+        className='basic-form'
         initialValues={{
           remember: true
         }}
         onFinish={handleLogin}
+        style={{ backgroundColor: token.colorBgLayout }}
       >
-        <div className='logo-container'>
-          <img src={DeuLogo} className='school-logo' alt='' />
-        </div>
+        <DeuLogo />
 
         <Form.Item
           name='email'
@@ -113,7 +115,7 @@ const Login = () => {
           ]}
         >
           <Input
-            prefix={<MailOutlined className='site-form-item-icon' />}
+            prefix={<MailOutlined />}
             placeholder={intl.formatMessage(authenticationResources.email)}
             addonAfter={
               <SelectDomain handleDomainChange={handleDomainChange} />
@@ -150,7 +152,10 @@ const Login = () => {
             </Checkbox>
           </Form.Item>
 
-          <Link className='password-forgot-link' to='/forgot-password'>
+          <Link
+            className='password-forgot-link'
+            to='/authentication/forgot-password'
+          >
             {intl.formatMessage(authenticationResources.forgotPassword)}
           </Link>
         </Form.Item>
@@ -174,6 +179,10 @@ const Login = () => {
           <Link to='/authentication/register' className='register-now-link'>
             {intl.formatMessage(authenticationResources.registerNow)}
           </Link>
+        </Form.Item>
+
+        <Form.Item className='custom-form-item'>
+          <ToggleThemeButton />
         </Form.Item>
       </Form>
     </div>

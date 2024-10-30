@@ -9,7 +9,6 @@ interface SelectDomainProps {
 const SelectDomain: React.FC<SelectDomainProps> = ({ handleDomainChange }) => {
   const { Option } = Select;
 
-  // Define the mapping between Domains and UserTypes
   const domainToUserTypeMap: { [key in Domains]: UserTypes } = {
     [Domains.Student]: UserTypes.Student,
     [Domains.Lecturer]: UserTypes.Lecturer
@@ -19,7 +18,7 @@ const SelectDomain: React.FC<SelectDomainProps> = ({ handleDomainChange }) => {
 
   const onChange = (selectedDomain: Domains) => {
     const userType = domainToUserTypeMap[selectedDomain];
-    handleDomainChange(userType); // Pass only the UserType value (0 for Student, 1 for Lecturer)
+    handleDomainChange(userType);
   };
 
   return (
