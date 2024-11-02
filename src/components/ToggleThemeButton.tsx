@@ -5,7 +5,6 @@ import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { UseTheme } from '../modules/ThemeProvider';
 
 const ToggleThemeButton = () => {
-  debugger;
   const { isDarkMode, toggleTheme } = UseTheme();
 
   return (

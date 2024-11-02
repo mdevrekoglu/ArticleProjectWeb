@@ -10,15 +10,14 @@ import './styles.css';
 import { useIntl } from 'react-intl';
 import commonResources from '../messages';
 import ToggleThemeButton from '../../../components/ToggleThemeButton';
-import Logo from './Logo';
-import DeuLogo from '../../../components/DeuLogo';
+import Logo from '../../../components/Logo';
 
 const MenuList = () => {
   const intl = useIntl();
 
   return (
     <Menu mode='inline' className='menu-bar'>
-      <DeuLogo />
+      <Logo />
 
       <Menu.Item key='home' icon={<HomeOutlined />}>
         {intl.formatMessage(commonResources.home)}
