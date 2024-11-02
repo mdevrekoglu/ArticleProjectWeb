@@ -1,6 +1,5 @@
 .menu-bar {
-  height: calc(100vh - 92px);
-  margin-top: 2rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -36,14 +35,14 @@
   transition: background-color 0.3s ease;
 }
 
-.toggle-theme-btn {
-  position: absolute;
-  bottom: 16px;
+.toggle-theme-btn-container {
+  display: flex;
   transition: all 0.3s ease;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
   cursor: pointer;
+  margin-top: auto; /* Pushes this container to the bottom */
 }
 
 .ttb-expanded {
@@ -55,18 +54,8 @@
   transform: translateX(32%);
 }
 
-.dark-mode {
-  background-color: white;
-  color: black;
-}
-
-.light-mode {
-  background-color: #08142c;
-  color: white;
-}
-
 .collapse-btn {
-  margin-left: 15px;
+  padding: 0 10px;
 }
 
 .log-out-btn {
@@ -75,4 +64,8 @@
   right: 0;
   margin-top: 15px;
   margin-right: 10px;
+}
+
+.header {
+  padding: 0 20px;
 }

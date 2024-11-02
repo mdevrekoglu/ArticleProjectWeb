@@ -23,7 +23,7 @@ const AuthContext = createContext<IAuthContext>(initialValue);
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(
-    initialValue.authenticated
+    localStorage.getItem('authToken') ? true : false
   );
   const navigate = useNavigate();
 

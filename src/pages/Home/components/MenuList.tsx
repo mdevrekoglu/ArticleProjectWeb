@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   BankOutlined,
   BookOutlined,
@@ -10,23 +9,17 @@ import { Menu } from 'antd';
 import './styles.css';
 import { useIntl } from 'react-intl';
 import commonResources from '../messages';
-import { useNavigate } from 'react-router-dom';
+import ToggleThemeButton from '../../../components/ToggleThemeButton';
+import Logo from './Logo';
+import DeuLogo from '../../../components/DeuLogo';
 
-interface MenuListProps {
-  darkTheme: boolean;
-  toggleTheme: () => void;
-}
-
-const MenuList: React.FC<MenuListProps> = ({ darkTheme, toggleTheme }) => {
+const MenuList = () => {
   const intl = useIntl();
-  const navigate = useNavigate(); // Initialize the navigate function
 
   return (
-    <Menu
-      theme={darkTheme ? 'dark' : 'light'}
-      mode='inline'
-      className='menu-bar'
-    >
+    <Menu mode='inline' className='menu-bar'>
+      <DeuLogo />
+
       <Menu.Item key='home' icon={<HomeOutlined />}>
         {intl.formatMessage(commonResources.home)}
       </Menu.Item>
@@ -44,11 +37,11 @@ const MenuList: React.FC<MenuListProps> = ({ darkTheme, toggleTheme }) => {
         key='settings'
         icon={<SettingOutlined />}
         title={intl.formatMessage(commonResources.settings)}
-      >
-        <Menu.Item key='login' onClick={() => navigate('/login')}>
-          login
-        </Menu.Item>
-      </Menu.SubMenu>
+      ></Menu.SubMenu>
+
+      <div className='toggle-theme-btn-container'>
+        <ToggleThemeButton />
+      </div>
     </Menu>
   );
 };

@@ -43,6 +43,7 @@ const Login = () => {
       >('/Authentication/Login', loginData);
 
       if (response.isSuccessed) {
+        debugger;
         login(response.token);
 
         notification.success({

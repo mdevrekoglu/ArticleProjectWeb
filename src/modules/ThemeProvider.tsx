@@ -18,10 +18,14 @@ export const UseTheme = () => {
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem('app-theme') === 'dark' ? true : false
+  );
 
   const toggleTheme = () => {
-    setIsDarkMode(prevMode => !prevMode);
+    setIsDarkMode(!isDarkMode);
+    debugger;
+    localStorage.setItem('app-theme', isDarkMode ? 'light' : 'dark');
   };
 
   return (

@@ -1,4 +1,4 @@
-import { UseTheme } from '../../../theme/ThemeProvider';
+import { UseTheme } from '../../../modules/ThemeProvider';
 
 const DeuPatternBackground = () => {
   const { isDarkMode } = UseTheme();
