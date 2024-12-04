@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Button } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
-import { UseTheme } from '../theme/ThemeProvider';
+import { UseTheme } from '../modules/ThemeProvider';
 
 const ToggleThemeButton = () => {
   const { isDarkMode, toggleTheme } = UseTheme();

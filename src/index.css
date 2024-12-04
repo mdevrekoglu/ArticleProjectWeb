@@ -13,16 +13,6 @@ code {
     monospace;
 }
 
-body.light {
-  --background-color: #ffffff;
-  --text-color: #000000;
-}
-
-body.dark {
-  --background-color: #333333;
-  --text-color: #ffffff;
-}
-
 .app {
   background-color: var(--background-color);
   color: var(--text-color);
