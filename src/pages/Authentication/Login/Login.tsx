@@ -10,9 +10,9 @@ import { UserTypes } from '../enums';
 import DeuPatternBackground from '../components/DeuPatternBackground';
 import { userLogInModel, userLogInResponseModel } from './models';
 import ApiService from '../../../modules/ApiService';
-import { UseAuth } from '../../../modules/AuthContext';
 import ToggleThemeButton from '../../../components/ToggleThemeButton';
 import DeuLogo from '../../../components/DeuLogo';
+import { useAuth } from '../../../modules/AuthContext';
 
 const { useToken } = theme;
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const { token } = useToken();
-  const { login } = UseAuth();
+  const { login } = useAuth();
   const intl = useIntl();
 
   const handleDomainChange = (userType: UserTypes) => {
@@ -43,7 +43,6 @@ const Login = () => {
       >('/Authentication/Login', loginData);
 
       if (response.isSuccessed) {
-        debugger;
         login(response.token);
 
         notification.success({

@@ -7,7 +7,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons';
-import { UseAuth } from '../../../modules/AuthContext';
+import { useAuth } from '../../../modules/AuthContext';
 
 const { Header, Sider } = Layout;
 
@@ -19,7 +19,7 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ collapsed, toggleCollapsed }) => {
   const { token } = theme.useToken();
 
-  const { logout } = UseAuth();
+  const { logout } = useAuth();
 
   return (
     <Layout>
