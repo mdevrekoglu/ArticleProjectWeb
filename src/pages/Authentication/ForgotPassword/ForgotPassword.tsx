@@ -39,7 +39,7 @@ const ForgotPassword = () => {
       const response = await ApiService.UseGet<
         userRequestModel,
         messageOutputModel
-      >('Authentication/ResetPasswordMail', forgotPasswordData);
+      >('Authentication/ResetPasswordEmail', forgotPasswordData);
 
       if (response.isSuccessed) {
         notification.success({

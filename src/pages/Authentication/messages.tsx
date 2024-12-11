@@ -141,6 +141,46 @@ const authenticationResources = defineMessages({
   sendPasswordResetEmailFailed: {
     id: 'authenticationMessages.sendPasswordResetEmailFailed',
     defaultMessage: 'Send Password Reset Email Failed!'
+  },
+  resetPassword: {
+    id: 'authenticationMessages.resetPassword',
+    defaultMessage: 'Reset Password'
+  },
+  unableToResetPasswordUnknownError: {
+    id: 'authenticationMessages.unableToResetPasswordUnknownError',
+    defaultMessage: 'Unable to reset password, please try again later.'
+  },
+  resetPasswordSuccess: {
+    id: 'authenticationMessages.resetPasswordSuccess',
+    defaultMessage: 'Password Reset Successful!'
+  },
+  resetPasswordFailed: {
+    id: 'authenticationMessages.resetPasswordFailed',
+    defaultMessage: 'Password Reset Failed!'
+  },
+  haventConfirmedEmail: {
+    id: 'authenticationMessages.haventConfirmedEmail',
+    defaultMessage: "Haven't confirmed your email?"
+  },
+  confirmEmailNow: {
+    id: 'authenticationMessages.confirmEmailNow',
+    defaultMessage: 'Confirm Now!'
+  },
+  emailConfirmed: {
+    id: 'authenticationMessages.emailConfirmed',
+    defaultMessage: 'Email Confirmed!'
+  },
+  emailNotConfirmed: {
+    id: 'authenticationMessages.emailNotConfirmed',
+    defaultMessage: 'Email Not Confirmed!'
+  },
+  unableToConfirmEmailUnknownError: {
+    id: 'authenticationMessages.unableToConfirmEmailUnknownError',
+    defaultMessage: 'Unable to confirm email, please try again later.'
+  },
+  confirmEmail: {
+    id: 'authenticationMessages.confirmEmail',
+    defaultMessage: 'Confirm Email'
   }
 });
 
