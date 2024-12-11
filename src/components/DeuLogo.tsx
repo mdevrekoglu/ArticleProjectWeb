@@ -1,6 +1,6 @@
 import React from 'react';
-import DeuLogoLight from '../assets/DeuLogoLight.png';
-import DeuLogoDark from '../assets/DeuLogoDark.png';
+import DeuLogoBlue from '../assets/DeuLogoBlue.png';
+import DeuLogoWhite from '../assets/DeuLogoWhite.png';
 import { UseTheme } from '../modules/ThemeProvider';
 
 const DeuLogo = () => {
@@ -9,7 +9,7 @@ const DeuLogo = () => {
   return (
     <div className='logo-container'>
       <img
-        src={isDarkMode ? DeuLogoDark : DeuLogoLight}
+        src={isDarkMode ? DeuLogoWhite : DeuLogoBlue}
         className='school-logo'
         alt=''
       />

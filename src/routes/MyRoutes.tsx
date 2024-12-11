@@ -5,6 +5,8 @@ import Home from '../pages/Home/Home';
 import ForgotPassword from '../pages/Authentication/ForgotPassword/ForgotPassword';
 import ResendConfirmEmail from '../pages/Authentication/ResendConfirmEmail/ResendConfirmEmail';
 import { useAuth } from '../modules/AuthContext';
+import ResetPassword from '../pages/Authentication/ResetPassword/ResetPassword';
+import ConfirmEmail from '../pages/Authentication/ConfirmEmail/ConfirmEmail';
 
 type Props = {};
 
@@ -29,6 +31,11 @@ const MyRoutes = (props: Props) => {
         path='/authentication/resend-confirm-email'
         element={<ResendConfirmEmail />}
       />
+      <Route
+        path='/authentication/reset-password'
+        element={<ResetPassword />}
+      />
+      <Route path='/authentication/confirm-email' element={<ConfirmEmail />} />
       <Route element={<PrivateRoutes />}>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />

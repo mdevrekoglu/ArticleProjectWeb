@@ -7,7 +7,7 @@ const DeuPatternBackground = () => {
     <svg
       width='100%'
       height='100%'
-      style={{ backgroundColor: isDarkMode ? '#000' : '#fff' }}
+      style={{ backgroundColor: isDarkMode ? '#141414' : '#fff' }} // Tema ile ilgili bir değişken tanımlanabilir
     >
       <defs>
         <pattern
@@ -22,7 +22,7 @@ const DeuPatternBackground = () => {
             y='50'
             fontFamily='Arial'
             fontSize='40'
-            fill={isDarkMode ? '#fff' : '#000'}
+            fill={isDarkMode ? '#fff' : '#141414'}
           >
             DEU
           </text>

@@ -173,10 +173,20 @@ const Login = () => {
 
         <Form.Item className='custom-form-item'>
           <span style={{ marginRight: '8px' }}>
+            {intl.formatMessage(authenticationResources.haventConfirmedEmail)}
+          </span>
+
+          <Link to='/authentication/resend-confirm-email'>
+            {intl.formatMessage(authenticationResources.confirmEmailNow)}
+          </Link>
+        </Form.Item>
+
+        <Form.Item className='custom-form-item'>
+          <span style={{ marginRight: '8px' }}>
             {intl.formatMessage(authenticationResources.dontHaveAccount)}
           </span>
 
-          <Link to='/authentication/register' className='register-now-link'>
+          <Link to='/authentication/register'>
             {intl.formatMessage(authenticationResources.registerNow)}
           </Link>
         </Form.Item>

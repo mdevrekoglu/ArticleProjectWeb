@@ -14,12 +14,12 @@
   margin-bottom: 20px;
   padding-bottom: 20px;
   align-items: center;
+  border-bottom: groove;
 }
 
 .school-logo {
   width: 150px;
-  height: auto;
-  background-color: #fff;
+  height: 150px;
   border-radius: 10%;
 }
 
