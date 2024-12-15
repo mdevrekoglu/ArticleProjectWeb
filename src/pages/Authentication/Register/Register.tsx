@@ -12,8 +12,8 @@ import '../styles.css';
 import ApiService from '../../../modules/ApiService';
 import { userRegisterModel } from './models';
 import { messageOutputModel } from '../../../models/BaseModels';
-import ToggleThemeButton from '../../../components/ToggleThemeButton';
-import DeuLogo from '../../../components/DeuLogo';
+import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
+import DeuLogo from '../../../components/Logos/DeuLogo';
 
 const { useToken } = theme;
 const Register = () => {

@@ -7,6 +7,8 @@ import ResendConfirmEmail from '../pages/Authentication/ResendConfirmEmail/Resen
 import { useAuth } from '../modules/AuthContext';
 import ResetPassword from '../pages/Authentication/ResetPassword/ResetPassword';
 import ConfirmEmail from '../pages/Authentication/ConfirmEmail/ConfirmEmail';
+import Affiliation from '../pages/Affiliation/Affiliation';
+import PrivateLayout from './PrivateLayout';
 
 type Props = {};
 
@@ -36,9 +38,13 @@ const MyRoutes = (props: Props) => {
         element={<ResetPassword />}
       />
       <Route path='/authentication/confirm-email' element={<ConfirmEmail />} />
+
       <Route element={<PrivateRoutes />}>
-        <Route path='/' element={<Home />} />
-        <Route path='/home' element={<Home />} />
+        <Route element={<PrivateLayout />}>
+          <Route path='/' element={<Navigate to='/home' replace />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/affiliation' element={<Affiliation />} />
+        </Route>
       </Route>
     </Router>
   );

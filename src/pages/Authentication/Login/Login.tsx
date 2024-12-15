@@ -10,8 +10,8 @@ import { UserTypes } from '../enums';
 import DeuPatternBackground from '../components/DeuPatternBackground';
 import { userLogInModel, userLogInResponseModel } from './models';
 import ApiService from '../../../modules/ApiService';
-import ToggleThemeButton from '../../../components/ToggleThemeButton';
-import DeuLogo from '../../../components/DeuLogo';
+import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
+import DeuLogo from '../../../components/Logos/DeuLogo';
 import { useAuth } from '../../../modules/AuthContext';
 
 const { useToken } = theme;
