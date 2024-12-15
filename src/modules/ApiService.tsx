@@ -1,42 +1,34 @@
-// services/ApiService.ts
 import axios, { AxiosInstance } from 'axios';
 
 class ApiService {
   private axiosInstance: AxiosInstance;
-  private token: string | null = null;
 
-  constructor(baseURL: string) {
+  constructor() {
+    const baseURL =
+      process.env.REACT_APP_API_BASE_URL || 'http://localhost:5055/api';
+
     this.axiosInstance = axios.create({
       baseURL,
       headers: {
         'Content-Type': 'application/json'
-      },
-      withCredentials: true
+      }
     });
 
-    // Interceptor to add token to each request if present
+    // Interceptor to add token from local storage
     this.axiosInstance.interceptors.request.use(
       config => {
-        if (this.token) {
-          config.headers.Authorization = `Bearer ${this.token}`;
+        const token = localStorage.getItem('authToken'); // Get token from local storage
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`; // Add token if exists
         }
+        console.log('Request with token:', config.headers.Authorization); // Debugging
         return config;
       },
       error => Promise.reject(error)
     );
   }
 
-  // Method to set the token after login
-  setToken(token: string) {
-    this.token = token;
-  }
-
-  // Clear token for logout
-  clearToken() {
-    this.token = null;
-  }
-
-  // usePost: Creates a POST request with generics
+  // POST Request
   async UsePost<TRequest, TResponse>(
     url: string,
     data: TRequest
@@ -50,15 +42,13 @@ class ApiService {
     }
   }
 
-  // useGet: Creates a GET request with generics
+  // GET Request
   async UseGet<TRequest, TResponse>(
     url: string,
-    data: TRequest
+    params: TRequest
   ): Promise<TResponse> {
     try {
-      const response = await this.axiosInstance.get<TResponse>(url, {
-        params: data
-      });
+      const response = await this.axiosInstance.get<TResponse>(url, { params });
       return response.data;
     } catch (error) {
       console.error('GET request error:', error);
@@ -67,6 +57,5 @@ class ApiService {
   }
 }
 
-// Export a singleton instance of ApiService
 // eslint-disable-next-line import/no-anonymous-default-export
-export default new ApiService('http://localhost:5055/api');
+export default new ApiService();

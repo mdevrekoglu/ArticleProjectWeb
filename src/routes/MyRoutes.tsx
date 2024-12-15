@@ -12,6 +12,7 @@ import PrivateLayout from './PrivateLayout';
 
 type Props = {};
 
+// Private Routes Wrapper
 const PrivateRoutes = () => {
   const { authenticated } = useAuth();
 
@@ -20,7 +21,19 @@ const PrivateRoutes = () => {
   return <Outlet />;
 };
 
+// Catch-All Redirect for Unauthenticated Users
+const AuthRedirect = () => {
+  return <Navigate to='/authentication/login' replace />;
+};
+
+// Catch-All Redirect for Authenticated Users
+const AuthenticatedRedirect = () => {
+  return <Navigate to='/home' replace />;
+};
+
 const MyRoutes = (props: Props) => {
+  const { authenticated } = useAuth(); // Check user authentication
+
   return (
     <Router>
       <Route path='/authentication/login' element={<Login />} />
@@ -44,8 +57,11 @@ const MyRoutes = (props: Props) => {
           <Route path='/' element={<Navigate to='/home' replace />} />
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
+          <Route path='*' element={<AuthenticatedRedirect />} />{' '}
         </Route>
       </Route>
+
+      {!authenticated && <Route path='*' element={<AuthRedirect />} />}
     </Router>
   );
 };
