@@ -1,7 +1,7 @@
 import { defineMessages } from 'react-intl';
 
 // Define messages with IDs and default messages
-const commonResources = defineMessages({
+const layoutResources = defineMessages({
   welcomeMessage: {
     id: 'commonMessages.welcomeMessage',
     defaultMessage: 'Welcome to the application'
@@ -25,7 +25,11 @@ const commonResources = defineMessages({
   settings: {
     id: 'commonMessages.settings',
     defaultMessage: 'Settings'
+  },
+  affiliation: {
+    id: 'commonMessages.affiliation',
+    defaultMessage: 'Affiliation'
   }
 });
 
-export default commonResources;
+export default layoutResources;

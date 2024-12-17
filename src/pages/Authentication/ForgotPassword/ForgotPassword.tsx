@@ -12,8 +12,8 @@ import { userRequestModel } from '../models';
 import ApiService from '../../../modules/ApiService';
 import { messageOutputModel } from '../../../models/BaseModels';
 import { useNavigate } from 'react-router-dom';
-import DeuLogo from '../../../components/DeuLogo';
-import ToggleThemeButton from '../../../components/ToggleThemeButton';
+import DeuLogo from '../../../components/Logos/DeuLogo';
+import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
 
 const { useToken } = theme;
 const ForgotPassword = () => {

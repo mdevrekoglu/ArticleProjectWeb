@@ -1,7 +1,7 @@
 import React from 'react';
-import DeuLogoBlue from '../assets/DeuLogoBlue.png';
-import DeuLogoWhite from '../assets/DeuLogoWhite.png';
-import { UseTheme } from '../modules/ThemeProvider';
+import DeuLogoBlue from '../../assets/DeuLogoBlue.png';
+import DeuLogoWhite from '../../assets/DeuLogoWhite.png';
+import { UseTheme } from '../../modules/ThemeProvider';
 
 const DeuLogo = () => {
   const { isDarkMode } = UseTheme();
