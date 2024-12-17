@@ -27,8 +27,13 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 
-  const [id, setId] = useState<number | undefined>(inputId);
+  const [id, setId] = useState<number | undefined>();
   const isNewItem = id === undefined || id === null;
+
+  // Update the state whenever inputId changes
+  useEffect(() => {
+    setId(inputId);
+  }, [inputId]);
 
   // Reset form and state when modal is opened or closed
   useEffect(() => {
@@ -161,6 +166,7 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
       onCancel={handleModalClose}
       footer={null}
       destroyOnClose
+      centered
       width={1000}
       closeIcon={null}
     >

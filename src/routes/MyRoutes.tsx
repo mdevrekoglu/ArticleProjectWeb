@@ -1,4 +1,10 @@
-import { Routes as Router, Route, Navigate, Outlet } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet
+} from 'react-router-dom';
 import Login from '../pages/Authentication/Login/Login';
 import Register from '../pages/Authentication/Register/Register';
 import Home from '../pages/Home/Home';
@@ -35,7 +41,7 @@ const MyRoutes = (props: Props) => {
   const { authenticated } = useAuth(); // Check user authentication
 
   return (
-    <Router>
+    <Routes>
       <Route path='/authentication/login' element={<Login />} />
       <Route path='/authentication/register' element={<Register />} />
       <Route
@@ -57,12 +63,12 @@ const MyRoutes = (props: Props) => {
           <Route path='/' element={<Navigate to='/home' replace />} />
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
-          <Route path='*' element={<AuthenticatedRedirect />} />{' '}
+          <Route path='*' element={<AuthenticatedRedirect />} />
         </Route>
       </Route>
 
       {!authenticated && <Route path='*' element={<AuthRedirect />} />}
-    </Router>
+    </Routes>
   );
 };
 

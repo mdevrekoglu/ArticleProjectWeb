@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import I18nProvider from './i18n';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import MyRoutes from './routes/MyRoutes';
 import { AuthProvider } from './modules/AuthContext';
 import ThemeProvider from './modules/ThemeProvider';
@@ -17,13 +17,13 @@ function App() {
 
   return (
     <I18nProvider locale={locale}>
-      <BrowserRouter>
-        <ThemeProvider>
+      <ThemeProvider>
+        <Router>
           <AuthProvider>
             <MyRoutes />
           </AuthProvider>
-        </ThemeProvider>
-      </BrowserRouter>
+        </Router>
+      </ThemeProvider>
     </I18nProvider>
   );
 }
