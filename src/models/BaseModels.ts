@@ -17,3 +17,12 @@ export interface baseListModel extends messageOutputModel {
 export interface keyInputModel {
   id: number;
 }
+
+export interface BaseGetOptionsByKeywordModel {
+  keyword: string;
+}
+
+export interface BaseGetOptionsOutputModel {
+  id: number;
+  name: string;
+}

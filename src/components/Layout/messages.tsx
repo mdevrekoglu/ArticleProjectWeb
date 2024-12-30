@@ -29,6 +29,14 @@ const layoutResources = defineMessages({
   affiliation: {
     id: 'commonMessages.affiliation',
     defaultMessage: 'Affiliation'
+  },
+  department: {
+    id: 'commonMessages.department',
+    defaultMessage: 'Department'
+  },
+  faculty: {
+    id: 'commonMessages.faculty',
+    defaultMessage: 'Faculty'
   }
 });
 

@@ -49,6 +49,14 @@ const MenuList = () => {
         >
           {intl.formatMessage(layoutResources.affiliation)}
         </Menu.Item>
+
+        <Menu.Item
+          key='faculty'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/faculty')}
+        >
+          {intl.formatMessage(layoutResources.faculty)}
+        </Menu.Item>
       </Menu.SubMenu>
 
       <Menu.SubMenu
