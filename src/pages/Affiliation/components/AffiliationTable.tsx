@@ -3,6 +3,9 @@ import { Table, Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import { TableProps } from 'antd/es/table';
 import { affiliationDataListModel, affiliationDataModel } from '../models';
+import { useIntl } from 'react-intl';
+import affiliationResources from '../messages';
+import Permission from '../../../components/Permission/Permission';
 
 interface AffiliationTableProps {
   data?: affiliationDataListModel;
@@ -19,44 +22,48 @@ const AffiliationTable: React.FC<AffiliationTableProps> = ({
   loading,
   onOpenModal
 }) => {
+  const intl = useIntl();
+
   const columns = [
     {
-      title: 'Affiliation Name',
+      title: intl.formatMessage(affiliationResources.affiliation),
       dataIndex: 'affiliationName',
       key: 'affiliationName',
       sorter: true,
       render: (text: string, record: affiliationDataModel) => (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Button
-            type='link'
-            icon={<EditOutlined />}
-            onClick={() => onOpenModal && onOpenModal(record.id)}
-            style={{ marginRight: 8 }}
-          />
+          <Permission roles={['Admin']}>
+            <Button
+              type='link'
+              icon={<EditOutlined />}
+              onClick={() => onOpenModal && onOpenModal(record.id)}
+              style={{ marginRight: 8 }}
+            />
+          </Permission>
           <span>{text}</span>
         </div>
       )
     },
     {
-      title: 'City',
+      title: intl.formatMessage(affiliationResources.city),
       dataIndex: 'city',
       key: 'city',
       sorter: true
     },
     {
-      title: 'Address',
+      title: intl.formatMessage(affiliationResources.address),
       dataIndex: 'address',
       key: 'address',
       sorter: true
     },
     {
-      title: 'Country',
+      title: intl.formatMessage(affiliationResources.country),
       dataIndex: 'country',
       key: 'country',
       sorter: true
     },
     {
-      title: 'Organization Type',
+      title: intl.formatMessage(affiliationResources.organizationType),
       dataIndex: 'organizationType',
       key: 'organizationType',
       sorter: true

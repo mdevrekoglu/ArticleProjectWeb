@@ -34,6 +34,10 @@ const messages = defineMessages({
   itemId: {
     id: 'dataPageModalHeader.itemId',
     defaultMessage: 'Item ID'
+  },
+  view: {
+    id: 'dataPageModalHeader.view',
+    defaultMessage: 'View'
   }
 });
 

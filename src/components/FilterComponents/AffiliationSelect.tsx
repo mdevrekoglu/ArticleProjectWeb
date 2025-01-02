@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Select, Spin, notification } from 'antd';
 import debounce from 'lodash/debounce';
@@ -8,39 +8,49 @@ import { BaseGetOptionsOutputModel } from '../../models/BaseModels';
 
 const messages = defineMessages({
   enterKeyword: {
-    id: 'affiliationSearch.enterKeyword',
+    id: 'affiliationSelect.enterKeyword',
     defaultMessage: 'Enter keyword'
   },
   unknownError: {
-    id: 'affiliationSearch.unknownError',
+    id: 'affiliationSelect.unknownError',
     defaultMessage: 'Unknown error occurred. Please try again later.'
   },
   anErrorOccurred: {
-    id: 'affiliationSearch.anErrorOccurred',
+    id: 'affiliationSelect.anErrorOccurred',
     defaultMessage: 'An error occurred!'
   },
   affiliation: {
-    id: 'affiliationSearch.affiliation',
+    id: 'affiliationSelect.affiliation',
     defaultMessage: 'Affiliation'
   }
 });
 
 const { Option } = Select;
 
-interface AffiliationSearchProps {
-  onChange: (selectedIds: number[]) => void; // Callback for selected IDs
+interface AffiliationSelectProps {
+  mode?: 'multiple' | 'single';
+  disabled?: boolean;
+  initialValue?: BaseGetOptionsOutputModel;
+  rules?: any[];
 }
 
-const AffiliationSearch: React.FC<AffiliationSearchProps> = ({ onChange }) => {
+const AffiliationSelect: React.FC<AffiliationSelectProps> = ({
+  mode = 'multiple',
+  disabled = false,
+  initialValue,
+  rules = []
+}) => {
   const intl = useIntl();
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [options, setOptions] = React.useState<BaseGetOptionsOutputModel[]>([]);
-  const [selectedAffiliations, setSelectedAffiliations] = React.useState<
-    number[]
-  >([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [options, setOptions] = useState<BaseGetOptionsOutputModel[]>([]);
+
+  useEffect(() => {
+    setOptions(initialValue ? [initialValue] : []);
+  }, [initialValue]);
 
   // Debounced fetch function
-  const fetchAffiliations = React.useCallback(
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchAffiliations = useCallback(
     debounce(async (searchTerm: string) => {
       if (searchTerm.length < 2) return; // Only fetch if at least 2 characters
 
@@ -69,26 +79,23 @@ const AffiliationSearch: React.FC<AffiliationSearchProps> = ({ onChange }) => {
     []
   );
 
-  const handleChange = (values: number[]) => {
-    setSelectedAffiliations(values);
-    onChange(values); // Call the callback with the selected IDs
-  };
-
   return (
     <DataPageFormItem
       label={intl.formatMessage(messages.affiliation)}
-      name='affiliationIds'
+      name={mode === 'multiple' ? 'affiliationIds' : 'affiliationId'}
+      rules={rules}
     >
       <Select
-        mode='multiple'
+        mode={mode === 'multiple' ? 'multiple' : undefined}
         placeholder={intl.formatMessage(messages.enterKeyword)}
+        defaultValue={initialValue?.id}
         onSearch={fetchAffiliations}
-        onChange={handleChange}
-        value={selectedAffiliations}
         notFoundContent={loading ? <Spin size='small' /> : null}
         filterOption={false}
         style={{ width: '100%' }}
+        disabled={disabled}
         allowClear
+        showSearch
       >
         {options.map(option => (
           <Option key={option.id} value={option.id}>
@@ -100,4 +107,4 @@ const AffiliationSearch: React.FC<AffiliationSearchProps> = ({ onChange }) => {
   );
 };
 
-export default AffiliationSearch;
+export default AffiliationSelect;

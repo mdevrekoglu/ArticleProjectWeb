@@ -1,4 +1,4 @@
-import { baseListModel } from '../../models/BaseModels';
+import { baseListModel, messageOutputModel } from '../../models/BaseModels';
 
 export interface facultySearchInputModel {
   facultyName: string;
@@ -14,4 +14,18 @@ export interface facultyDataModel {
   facultyName: string;
   affiliationId: number;
   affiliationName: string;
+}
+
+export interface facultyDataOutputModel
+  extends facultyDataModel,
+    messageOutputModel {}
+
+export interface facultyCreateInputModel {
+  facultyName: string;
+  affiliationId: number;
+}
+
+export interface facultyUpdateInputModel {
+  id: number;
+  facultyName: string;
 }

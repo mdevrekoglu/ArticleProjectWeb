@@ -1,8 +1,8 @@
 import { defineMessages } from 'react-intl';
 
 const facultyResources = defineMessages({
-  pageTitle: {
-    id: 'facultyResources.pageTitle',
+  faculty: {
+    id: 'facultyResources.Faculty',
     defaultMessage: 'Faculty'
   },
   facultyName: {
@@ -20,10 +20,6 @@ const facultyResources = defineMessages({
   enterFacultyName: {
     id: 'facultyResources.enterFacultyName',
     defaultMessage: 'Enter faculty name'
-  },
-  affiliation: {
-    id: 'facultyResources.affiliation',
-    defaultMessage: 'Affiliation'
   }
 });
 

@@ -1,19 +1,15 @@
-import { Col, Form, Input, Row } from 'antd';
+import { Col, Divider, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import facultyResources from '../messages';
-import AffiliationSearch from '../../../components/FilterComponents/AffiliationSearch';
+import AffiliationSearch from '../../../components/FilterComponents/AffiliationSelect';
 
 interface FacultyFilterProps {
   form: any;
-  onAffiliationChange: (selectedIds: number[]) => void;
 }
 
-const FacultyFilter: React.FC<FacultyFilterProps> = ({
-  form,
-  onAffiliationChange
-}) => {
+const FacultyFilter: React.FC<FacultyFilterProps> = ({ form }) => {
   const intl = useIntl();
 
   return (
@@ -32,9 +28,10 @@ const FacultyFilter: React.FC<FacultyFilterProps> = ({
           </DataPageFormItem>
         </Col>
         <Col xs={24} sm={16}>
-          <AffiliationSearch onChange={onAffiliationChange} />
+          <AffiliationSearch />
         </Col>
       </Row>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
     </Form>
   );
 };

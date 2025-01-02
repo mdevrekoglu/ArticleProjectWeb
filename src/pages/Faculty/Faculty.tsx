@@ -6,12 +6,18 @@ import facultyResources from './messages';
 import { Form, notification } from 'antd';
 import ApiService from '../../modules/ApiService';
 import FacultyFilter from './components/FacultyFilter';
+import FacultyTable from './components/FacultyTable';
+import FacultyDetailModal from './components/FacultyDetailModal';
 
 const Faculty: React.FC = () => {
   const intl = useIntl();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<facultyDataListModel>();
+
+  // Modal control
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
   // State for pagination and sorting
   const [pagination, setPagination] = useState({
@@ -38,8 +44,7 @@ const Faculty: React.FC = () => {
         pageIndex: page - 1, // Page index starts from 0 in API!!!
         pageSize: pageSize,
         sortingColumn: sortField,
-        sortingType: sortOrder,
-        affiliationIds: form.getFieldsValue().affiliationIds || []
+        sortingType: sortOrder
       };
 
       const response = await ApiService.UseGet<
@@ -76,21 +81,41 @@ const Faculty: React.FC = () => {
     }
   };
 
-  const handleAffiliationChange = (selectedIds: number[]) => {
-    console.log('Selected IDs:', selectedIds);
-    // Use the selected IDs here
-  };
-
   const handleClear = () => {
     form.resetFields();
     setData(undefined);
     setPagination({ current: 1, pageSize: 10, total: 0 });
   };
 
+  const handleTableChange = (pagination: any, filters: any, sorter: any) => {
+    const { current, pageSize } = pagination;
+    setSorter({ field: sorter.field, order: sorter.order });
+    fetchData(current, pageSize, sorter.field, sorter.order);
+  };
+
+  const handleModelOpen = (id?: number) => {
+    setSelectedId(id);
+    setIsModalVisible(true);
+  };
+
+  const handleModalClose = (isDataChanged?: boolean) => {
+    setIsModalVisible(false);
+    setSelectedId(undefined);
+
+    if (isDataChanged) {
+      fetchData(
+        pagination.current,
+        pagination.pageSize,
+        sorter.field,
+        sorter.order
+      );
+    }
+  };
+
   return (
     <div>
       <DataPageHeader
-        pageTitle={intl.formatMessage(facultyResources.pageTitle)}
+        pageTitle={intl.formatMessage(facultyResources.faculty)}
         onSearchClick={() =>
           fetchData(
             pagination.current,
@@ -100,13 +125,30 @@ const Faculty: React.FC = () => {
           )
         }
         onClearClick={handleClear}
+        onNewItemClick={handleModelOpen}
         loading={loading}
         dataCount={data?.count}
       />
 
-      <FacultyFilter
-        form={form}
-        onAffiliationChange={handleAffiliationChange}
+      <FacultyFilter form={form} />
+
+      <FacultyTable
+        data={data}
+        onSortChange={handleTableChange}
+        pagination={{
+          current: pagination.current,
+          pageSize: pagination.pageSize,
+          total: pagination.total,
+          showSizeChanger: true
+        }}
+        loading={loading}
+        onOpenModal={handleModelOpen}
+      />
+
+      <FacultyDetailModal
+        open={isModalVisible}
+        handleModalClose={handleModalClose}
+        inputId={selectedId}
       />
     </div>
   );
