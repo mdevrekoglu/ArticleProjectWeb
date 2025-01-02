@@ -41,8 +41,8 @@ const affiliationResources = defineMessages({
     id: 'affiliationMessages.enterOrganizationType',
     defaultMessage: 'Enter organization type'
   },
-  pageTitle: {
-    id: 'affiliationMessages.pageTitle',
+  affiliation: {
+    id: 'affiliationMessages.affiliation',
     defaultMessage: 'Affiliation'
   },
   unknownError: {

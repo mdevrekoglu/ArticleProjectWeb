@@ -14,7 +14,7 @@ import { keyInputModel } from '../../../models/BaseModels';
 
 interface AffiliationDetailModalProps {
   open: boolean;
-  handleModalClose: () => void;
+  handleModalClose: (isDataChanged: boolean) => void;
   inputId?: number;
 }
 
@@ -24,8 +24,9 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
   inputId
 }) => {
   const intl = useIntl();
-  const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [isDataChanged, setIsDataChanged] = useState(false);
 
   const [id, setId] = useState<number | undefined>();
   const isNewItem = id === undefined || id === null;
@@ -114,7 +115,8 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
             });
 
             setId(response.id);
-            form.setFieldsValue(response); // Populate form with the created data
+            form.setFieldsValue(response);
+            setIsDataChanged(true);
           } else {
             notification.error({
               message: intl.formatMessage(affiliationResources.anErrorOccurred),
@@ -143,7 +145,8 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
               style: { width: '400px' }
             });
 
-            form.setFieldsValue(response); // Update the form with the updated data
+            form.setFieldsValue(response);
+            setIsDataChanged(true);
           } else {
             notification.error({
               message: intl.formatMessage(affiliationResources.anErrorOccurred),
@@ -163,7 +166,7 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
   return (
     <Modal
       open={open}
-      onCancel={handleModalClose}
+      onCancel={() => handleModalClose(isDataChanged)}
       footer={null}
       destroyOnClose
       centered
@@ -171,9 +174,9 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
       closeIcon={null}
     >
       <DataPageModalHeader
-        pageTitle={intl.formatMessage(affiliationResources.pageTitle)}
+        pageTitle={intl.formatMessage(affiliationResources.affiliation)}
         loading={loading}
-        onCloseClick={handleModalClose}
+        onCloseClick={() => handleModalClose(isDataChanged)}
         isNewItem={isNewItem}
         onClick={handleClick}
         id={id}

@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { defineMessages, useIntl } from 'react-intl';
 import Title from 'antd/es/typography/Title';
+import Permission from '../Permission/Permission';
 
 const { Text } = Typography;
 
@@ -102,41 +103,45 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
           </>
         )}
 
-        {onImportExcelClick && (
-          <Button
-            type='default'
-            icon={<PlusOutlined />}
-            onClick={onImportExcelClick}
-            loading={loading}
-            style={{
-              alignItems: 'center',
-              borderRadius: '5px',
-              padding: '0 12px',
-              margin: '8px 4px',
-              float: 'right'
-            }}
-          >
-            {intl.formatMessage(messages.importExcel)}
-          </Button>
-        )}
+        <Permission roles={['Admin']}>
+          {onImportExcelClick && (
+            <Button
+              type='default'
+              icon={<PlusOutlined />}
+              onClick={onImportExcelClick}
+              loading={loading}
+              style={{
+                alignItems: 'center',
+                borderRadius: '5px',
+                padding: '0 12px',
+                margin: '8px 4px',
+                float: 'right'
+              }}
+            >
+              {intl.formatMessage(messages.importExcel)}
+            </Button>
+          )}
+        </Permission>
 
-        {onNewItemClick && (
-          <Button
-            type='default'
-            icon={<PlusOutlined />}
-            onClick={() => onNewItemClick(undefined)}
-            loading={loading}
-            style={{
-              alignItems: 'center',
-              borderRadius: '5px',
-              padding: '0 12px',
-              margin: '8px 4px',
-              float: 'right'
-            }}
-          >
-            {intl.formatMessage(messages.newItem)}
-          </Button>
-        )}
+        <Permission roles={['Admin']}>
+          {onNewItemClick && (
+            <Button
+              type='default'
+              icon={<PlusOutlined />}
+              onClick={() => onNewItemClick(undefined)}
+              loading={loading}
+              style={{
+                alignItems: 'center',
+                borderRadius: '5px',
+                padding: '0 12px',
+                margin: '8px 4px',
+                float: 'right'
+              }}
+            >
+              {intl.formatMessage(messages.newItem)}
+            </Button>
+          )}
+        </Permission>
 
         {onClearClick && (
           <Button

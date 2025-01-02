@@ -119,7 +119,7 @@ const Affiliation: React.FC = () => {
   return (
     <div>
       <DataPageHeader
-        pageTitle={intl.formatMessage(affiliationResources.pageTitle)}
+        pageTitle={intl.formatMessage(affiliationResources.affiliation)}
         onSearchClick={() =>
           fetchData(
             pagination.current,

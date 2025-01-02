@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import qs from 'qs';
 
 class ApiService {
   private axiosInstance: AxiosInstance;
@@ -11,7 +12,9 @@ class ApiService {
       baseURL,
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      paramsSerializer: params =>
+        qs.stringify(params, { arrayFormat: 'repeat' }) // Custom serialization for arrays
     });
 
     // Interceptor to add token from local storage
@@ -21,7 +24,6 @@ class ApiService {
         if (token) {
           config.headers.Authorization = `Bearer ${token}`; // Add token if exists
         }
-        console.log('Request with token:', config.headers.Authorization); // Debugging
         return config;
       },
       error => Promise.reject(error)

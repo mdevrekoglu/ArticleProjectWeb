@@ -1,10 +1,4 @@
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  Outlet
-} from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Login from '../pages/Authentication/Login/Login';
 import Register from '../pages/Authentication/Register/Register';
 import Home from '../pages/Home/Home';
@@ -15,6 +9,7 @@ import ResetPassword from '../pages/Authentication/ResetPassword/ResetPassword';
 import ConfirmEmail from '../pages/Authentication/ConfirmEmail/ConfirmEmail';
 import Affiliation from '../pages/Affiliation/Affiliation';
 import PrivateLayout from './PrivateLayout';
+import Faculty from '../pages/Faculty/Faculty';
 
 type Props = {};
 
@@ -63,6 +58,7 @@ const MyRoutes = (props: Props) => {
           <Route path='/' element={<Navigate to='/home' replace />} />
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
+          <Route path='/faculty' element={<Faculty />} />
           <Route path='*' element={<AuthenticatedRedirect />} />
         </Route>
       </Route>

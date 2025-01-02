@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Input, Form, Divider } from 'antd';
 import { useIntl } from 'react-intl';
 import affiliationResources from '../messages';
-import '../styles.css';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 
 interface AffiliationFilterProps {
