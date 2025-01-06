@@ -3,6 +3,7 @@ import {
   BookOutlined,
   HomeOutlined,
   RightCircleOutlined,
+  SearchOutlined,
   SettingOutlined,
   UserOutlined
 } from '@ant-design/icons';
@@ -30,11 +31,21 @@ const MenuList = () => {
       >
         {intl.formatMessage(layoutResources.home)}
       </Menu.Item>
+
       <Menu.Item key='article' icon={<BookOutlined />}>
         {intl.formatMessage(layoutResources.article)}
       </Menu.Item>
+
       <Menu.Item key='author' icon={<UserOutlined />}>
         {intl.formatMessage(layoutResources.author)}
+      </Menu.Item>
+
+      <Menu.Item
+        key='search-collaborator'
+        icon={<SearchOutlined />}
+        onClick={() => navigate('/search-collaborator')}
+      >
+        {intl.formatMessage(layoutResources.findCollaborator)}
       </Menu.Item>
 
       <Menu.SubMenu
