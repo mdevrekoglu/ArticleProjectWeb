@@ -10,6 +10,7 @@ import ConfirmEmail from '../pages/Authentication/ConfirmEmail/ConfirmEmail';
 import Affiliation from '../pages/Affiliation/Affiliation';
 import PrivateLayout from './PrivateLayout';
 import Faculty from '../pages/Faculty/Faculty';
+import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
 
 type Props = {};
 
@@ -59,6 +60,7 @@ const MyRoutes = (props: Props) => {
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
+          <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='*' element={<AuthenticatedRedirect />} />
         </Route>
       </Route>

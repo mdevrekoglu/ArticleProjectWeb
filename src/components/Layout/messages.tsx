@@ -3,40 +3,44 @@ import { defineMessages } from 'react-intl';
 // Define messages with IDs and default messages
 const layoutResources = defineMessages({
   welcomeMessage: {
-    id: 'commonMessages.welcomeMessage',
+    id: 'layoutResources.welcomeMessage',
     defaultMessage: 'Welcome to the application'
   },
   home: {
-    id: 'commonMessages.home',
+    id: 'layoutResources.home',
     defaultMessage: 'Home'
   },
   article: {
-    id: 'commonMessages.article',
+    id: 'layoutResources.article',
     defaultMessage: 'Article'
   },
   author: {
-    id: 'commonMessages.author',
+    id: 'layoutResources.author',
     defaultMessage: 'Author'
   },
   facility: {
-    id: 'commonMessages.facility',
+    id: 'layoutResources.facility',
     defaultMessage: 'Facility'
   },
   settings: {
-    id: 'commonMessages.settings',
+    id: 'layoutResources.settings',
     defaultMessage: 'Settings'
   },
   affiliation: {
-    id: 'commonMessages.affiliation',
+    id: 'layoutResources.affiliation',
     defaultMessage: 'Affiliation'
   },
   department: {
-    id: 'commonMessages.department',
+    id: 'layoutResources.department',
     defaultMessage: 'Department'
   },
   faculty: {
-    id: 'commonMessages.faculty',
+    id: 'layoutResources.faculty',
     defaultMessage: 'Faculty'
+  },
+  findCollaborator: {
+    id: 'layoutResources.findCollaborator',
+    defaultMessage: 'Find Collaborator'
   }
 });
 
