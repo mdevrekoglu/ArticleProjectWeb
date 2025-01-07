@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Login from '../pages/Authentication/Login/Login';
 import Register from '../pages/Authentication/Register/Register';
@@ -11,30 +12,28 @@ import Affiliation from '../pages/Affiliation/Affiliation';
 import PrivateLayout from './PrivateLayout';
 import Faculty from '../pages/Faculty/Faculty';
 import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
+import Loader from '../components/Loader/Loader';
 
-type Props = {};
-
-// Private Routes Wrapper
 const PrivateRoutes = () => {
-  const { authenticated } = useAuth();
+  const { authenticated, loading } = useAuth();
 
-  if (!authenticated) return <Navigate to='/authentication/login' replace />;
+  if (loading) {
+    return <Loader />; // Show loader while authentication is being checked
+  }
+
+  if (!authenticated) {
+    return <Navigate to='/authentication/login' replace />;
+  }
 
   return <Outlet />;
 };
 
-// Catch-All Redirect for Unauthenticated Users
-const AuthRedirect = () => {
-  return <Navigate to='/authentication/login' replace />;
-};
+const MyRoutes = () => {
+  const { authenticated, loading } = useAuth();
 
-// Catch-All Redirect for Authenticated Users
-const AuthenticatedRedirect = () => {
-  return <Navigate to='/home' replace />;
-};
-
-const MyRoutes = (props: Props) => {
-  const { authenticated } = useAuth(); // Check user authentication
+  if (loading) {
+    return <Loader />; // Show loader globally
+  }
 
   return (
     <Routes>
@@ -61,11 +60,15 @@ const MyRoutes = (props: Props) => {
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
-          <Route path='*' element={<AuthenticatedRedirect />} />
         </Route>
       </Route>
 
-      {!authenticated && <Route path='*' element={<AuthRedirect />} />}
+      <Route
+        path='*'
+        element={
+          <Navigate to={authenticated ? '/home' : '/authentication/login'} />
+        }
+      />
     </Routes>
   );
 };
