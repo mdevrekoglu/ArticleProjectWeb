@@ -33,7 +33,8 @@ const Login = () => {
     const loginData: userLogInModel = {
       email: values.email,
       password: values.password,
-      userType: userType
+      userType: userType,
+      rememberMe: values.rememberMe
     };
 
     try {
@@ -43,7 +44,7 @@ const Login = () => {
       >('/Authentication/Login', loginData);
 
       if (response.isSuccessed) {
-        login(response.token);
+        login(response.token, response.refreshToken);
 
         notification.success({
           message: intl.formatMessage(authenticationResources.loginSuccess),
@@ -146,7 +147,7 @@ const Login = () => {
         </Form.Item>
 
         <Form.Item>
-          <Form.Item name='remember' valuePropName='checked' noStyle>
+          <Form.Item name='rememberMe' valuePropName='checked' noStyle>
             <Checkbox>
               {intl.formatMessage(authenticationResources.rememberMe)}
             </Checkbox>
