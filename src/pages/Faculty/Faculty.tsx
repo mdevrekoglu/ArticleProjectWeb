@@ -62,6 +62,7 @@ const Faculty: React.FC = () => {
           duration: 5,
           style: { width: '400px' }
         });
+
         setData(undefined);
       }
 
@@ -77,6 +78,7 @@ const Faculty: React.FC = () => {
         duration: 5,
         style: { width: '400px' }
       });
+
       setData(undefined);
     } finally {
       setLoading(false);

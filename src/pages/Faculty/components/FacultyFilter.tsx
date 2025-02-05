@@ -27,11 +27,12 @@ const FacultyFilter: React.FC<FacultyFilterProps> = ({ form }) => {
             />
           </DataPageFormItem>
         </Col>
+
         <Col xs={24} sm={16}>
           <AffiliationSearch />
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
     </Form>
   );
 };

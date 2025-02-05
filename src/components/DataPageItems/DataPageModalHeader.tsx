@@ -199,7 +199,7 @@ const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
         )}
       </Form.Item>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
     </div>
   );
 };

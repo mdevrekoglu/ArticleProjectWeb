@@ -13,12 +13,13 @@ import PrivateLayout from './PrivateLayout';
 import Faculty from '../pages/Faculty/Faculty';
 import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
 import Loader from '../components/Loader/Loader';
+import UserPanel from '../pages/UserPanel/UserPanel';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
 
   if (loading) {
-    return <Loader />; // Show loader while authentication is being checked
+    return <Loader />;
   }
 
   if (!authenticated) {
@@ -32,7 +33,7 @@ const MyRoutes = () => {
   const { authenticated, loading } = useAuth();
 
   if (loading) {
-    return <Loader />; // Show loader globally
+    return <Loader />;
   }
 
   return (
@@ -60,6 +61,7 @@ const MyRoutes = () => {
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
+          <Route path='/user-panel' element={<UserPanel />} />
         </Route>
       </Route>
 
