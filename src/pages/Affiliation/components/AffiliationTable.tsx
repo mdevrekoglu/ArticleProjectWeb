@@ -45,6 +45,12 @@ const AffiliationTable: React.FC<AffiliationTableProps> = ({
       )
     },
     {
+      title: intl.formatMessage(affiliationResources.scopusId),
+      dataIndex: 'scopusId',
+      key: 'scopusId',
+      sorter: true
+    },
+    {
       title: intl.formatMessage(affiliationResources.city),
       dataIndex: 'city',
       key: 'city',

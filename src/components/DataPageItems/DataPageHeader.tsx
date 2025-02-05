@@ -43,7 +43,7 @@ interface DataPageHeaderProps {
   loading: boolean;
   onSearchClick?: () => void;
   onClearClick?: () => void;
-  onNewItemClick?: (id?: number) => void;
+  onNewItemClick?: (id?: any) => void;
   onImportExcelClick?: () => void;
 }
 
@@ -180,7 +180,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
         )}
       </Form.Item>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
     </div>
   );
 };

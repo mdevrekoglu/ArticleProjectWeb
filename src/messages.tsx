@@ -8,6 +8,38 @@ const commonResources = defineMessages({
   unknownError: {
     id: 'commonResources.unknownError',
     defaultMessage: 'Unknown error occurred. Please try again later.'
+  },
+  email: {
+    id: 'commonResources.email',
+    defaultMessage: 'Email'
+  },
+  firstName: {
+    id: 'commonResources.firstName',
+    defaultMessage: 'First Name'
+  },
+  lastName: {
+    id: 'commonResources.lastName',
+    defaultMessage: 'Last Name'
+  },
+  affiliationName: {
+    id: 'commonResources.affiliationName',
+    defaultMessage: 'Affiliation'
+  },
+  departmentName: {
+    id: 'commonResources.departmentName',
+    defaultMessage: 'Department'
+  },
+  facultyName: {
+    id: 'commonResources.facultyName',
+    defaultMessage: 'Faculty'
+  },
+  researcherId: {
+    id: 'commonResources.researcherId',
+    defaultMessage: 'Researcher ID'
+  },
+  roles: {
+    id: 'commonResources.roles',
+    defaultMessage: 'Roles'
   }
 });
 

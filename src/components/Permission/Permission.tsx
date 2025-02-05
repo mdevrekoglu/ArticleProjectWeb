@@ -1,4 +1,3 @@
-// src/components/Permission.tsx
 import React, { ReactNode } from 'react';
 import { useAuth } from '../../modules/AuthContext';
 
