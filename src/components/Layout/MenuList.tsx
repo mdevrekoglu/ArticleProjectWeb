@@ -1,20 +1,22 @@
 import {
   BankOutlined,
   BookOutlined,
+  DesktopOutlined,
   HomeOutlined,
   RightCircleOutlined,
   SearchOutlined,
   SettingOutlined,
-  UserOutlined
+  UserOutlined,
+  UserSwitchOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import './styles.css';
 import { useIntl } from 'react-intl';
-
 import ToggleThemeButton from '../ThemeItems/ToggleThemeButton';
 import Logo from '../Logos/Logo';
 import { useNavigate } from 'react-router';
 import layoutResources from './messages';
+import Permission from '../Permission/Permission';
 
 const MenuList = () => {
   const intl = useIntl();
@@ -69,6 +71,31 @@ const MenuList = () => {
           {intl.formatMessage(layoutResources.faculty)}
         </Menu.Item>
       </Menu.SubMenu>
+
+      {/* Permissionlardan dolayı düzgün görüntülenmiyor. inline css ile sorun çözüldü şimdilik */}
+      <Permission roles={['Admin']}>
+        <Menu.SubMenu
+          key='adminPanel'
+          icon={<DesktopOutlined style={{ paddingLeft: '24px' }} />}
+          title={intl.formatMessage(layoutResources.adminPanel)}
+        >
+          <Menu.Item
+            key='userPanel'
+            icon={<UserOutlined style={{ paddingLeft: '24px' }} />}
+            onClick={() => navigate('/user-panel')}
+          >
+            {intl.formatMessage(layoutResources.userPanel)}
+          </Menu.Item>
+
+          <Menu.Item
+            key='rolePanel'
+            icon={<UserSwitchOutlined style={{ paddingLeft: '24px' }} />}
+            onClick={() => navigate('/role-panel')}
+          >
+            {intl.formatMessage(layoutResources.rolePanel)}
+          </Menu.Item>
+        </Menu.SubMenu>
+      </Permission>
 
       <Menu.SubMenu
         key='settings'

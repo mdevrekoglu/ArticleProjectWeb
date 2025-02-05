@@ -1,8 +1,7 @@
 import React from 'react';
-import { Spin, theme, Typography } from 'antd';
+import { Spin, theme } from 'antd';
 import './style.css';
 
-const { Text } = Typography;
 const { useToken } = theme;
 
 const Loader: React.FC = () => {

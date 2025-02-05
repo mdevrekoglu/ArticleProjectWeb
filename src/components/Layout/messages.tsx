@@ -41,6 +41,18 @@ const layoutResources = defineMessages({
   findCollaborator: {
     id: 'layoutResources.findCollaborator',
     defaultMessage: 'Find Collaborator'
+  },
+  userPanel: {
+    id: 'layoutResources.userPanel',
+    defaultMessage: 'User Panel'
+  },
+  rolePanel: {
+    id: 'layoutResources.rolePanel',
+    defaultMessage: 'Role Panel'
+  },
+  adminPanel: {
+    id: 'layoutResources.adminPanel',
+    defaultMessage: 'Admin Panel'
   }
 });
 

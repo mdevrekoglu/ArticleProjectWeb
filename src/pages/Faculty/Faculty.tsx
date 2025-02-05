@@ -62,6 +62,7 @@ const Faculty: React.FC = () => {
           duration: 5,
           style: { width: '400px' }
         });
+        setData(undefined);
       }
 
       setPagination({
@@ -76,6 +77,7 @@ const Faculty: React.FC = () => {
         duration: 5,
         style: { width: '400px' }
       });
+      setData(undefined);
     } finally {
       setLoading(false);
     }
