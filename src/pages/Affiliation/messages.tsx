@@ -64,6 +64,10 @@ const affiliationResources = defineMessages({
   scopusId: {
     id: 'affiliationMessages.scopusId',
     defaultMessage: 'Scopus ID'
+  },
+  affiliationName: {
+    id: 'affiliationMessages.affiliationName',
+    defaultMessage: 'Affiliation Name'
   }
 });
 

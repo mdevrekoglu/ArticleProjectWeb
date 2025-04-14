@@ -18,9 +18,14 @@ import { useNavigate } from 'react-router';
 import layoutResources from './messages';
 import Permission from '../Permission/Permission';
 
-const MenuList = () => {
+interface MenuListProps {
+  collapsed?: boolean;
+}
+
+const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
   const intl = useIntl();
   const navigate = useNavigate();
+  const iconStyle = !collapsed ? { paddingLeft: '24px' } : undefined; // For permission items
 
   return (
     <Menu mode='inline' className='menu-bar'>
@@ -38,8 +43,8 @@ const MenuList = () => {
         {intl.formatMessage(layoutResources.article)}
       </Menu.Item>
 
-      <Menu.Item key='author' icon={<UserOutlined />}>
-        {intl.formatMessage(layoutResources.author)}
+      <Menu.Item key='researcherSearch' icon={<UserOutlined />}>
+        {intl.formatMessage(layoutResources.researcher)}
       </Menu.Item>
 
       <Menu.Item
@@ -70,18 +75,26 @@ const MenuList = () => {
         >
           {intl.formatMessage(layoutResources.faculty)}
         </Menu.Item>
+
+        <Menu.Item
+          key='researcher'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/researcher')}
+        >
+          {intl.formatMessage(layoutResources.researcher)}
+        </Menu.Item>
       </Menu.SubMenu>
 
       {/* Permissionlardan dolayı düzgün görüntülenmiyor. inline css ile sorun çözüldü şimdilik */}
       <Permission roles={['Admin']}>
         <Menu.SubMenu
           key='adminPanel'
-          icon={<DesktopOutlined style={{ paddingLeft: '24px' }} />}
+          icon={<DesktopOutlined style={iconStyle} />}
           title={intl.formatMessage(layoutResources.adminPanel)}
         >
           <Menu.Item
             key='userPanel'
-            icon={<UserOutlined style={{ paddingLeft: '24px' }} />}
+            icon={<UserOutlined style={iconStyle} />}
             onClick={() => navigate('/user-panel')}
           >
             {intl.formatMessage(layoutResources.userPanel)}
@@ -89,8 +102,8 @@ const MenuList = () => {
 
           <Menu.Item
             key='rolePanel'
-            icon={<UserSwitchOutlined style={{ paddingLeft: '24px' }} />}
-            onClick={() => navigate('/role-panel')}
+            icon={<UserSwitchOutlined style={iconStyle} />}
+            // onClick={() => navigate('/role-panel')}
           >
             {intl.formatMessage(layoutResources.rolePanel)}
           </Menu.Item>

@@ -118,16 +118,18 @@ const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
               {intl.formatMessage(messages.update)} {pageTitle}
             </Text>
 
-            <Text
-              style={{
-                marginTop: '26px',
-                marginLeft: '30px',
-                fontSize: '12px',
-                float: 'left'
-              }}
-            >
-              {intl.formatMessage(messages.itemId)} : {id}
-            </Text>
+            {id && (
+              <Text
+                style={{
+                  marginTop: '26px',
+                  marginLeft: '30px',
+                  fontSize: '12px',
+                  float: 'left'
+                }}
+              >
+                {intl.formatMessage(messages.itemId)} : {id}
+              </Text>
+            )}
           </>
         )}
 

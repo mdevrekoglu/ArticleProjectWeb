@@ -14,9 +14,9 @@ const layoutResources = defineMessages({
     id: 'layoutResources.article',
     defaultMessage: 'Article'
   },
-  author: {
-    id: 'layoutResources.author',
-    defaultMessage: 'Author'
+  researcher: {
+    id: 'layoutResources.researcher',
+    defaultMessage: 'Researcher'
   },
   facility: {
     id: 'layoutResources.facility',
