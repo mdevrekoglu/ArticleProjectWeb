@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
@@ -39,7 +40,22 @@ class ApiService {
       const response = await this.axiosInstance.post<TResponse>(url, data);
       return response.data;
     } catch (error) {
-      console.error('POST request error:', error);
+      if (axios.isAxiosError(error) && error.response?.data?.title) {
+        notification.error({
+          message: 'An unexpected error occurred',
+          description: error.response.data.title,
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      } else {
+        notification.error({
+          message: 'An unexpected error occurred',
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      }
       throw error;
     }
   }
@@ -53,7 +69,22 @@ class ApiService {
       const response = await this.axiosInstance.get<TResponse>(url, { params });
       return response.data;
     } catch (error) {
-      console.error('GET request error:', error);
+      if (axios.isAxiosError(error) && error.response?.data?.title) {
+        notification.error({
+          message: 'An unexpected error occurred',
+          description: error.response.data.title,
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      } else {
+        notification.error({
+          message: 'An unexpected error occurred',
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      }
       throw error;
     }
   }

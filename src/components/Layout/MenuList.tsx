@@ -16,7 +16,8 @@ import ToggleThemeButton from '../ThemeItems/ToggleThemeButton';
 import Logo from '../Logos/Logo';
 import { useNavigate } from 'react-router';
 import layoutResources from './messages';
-import Permission from '../Permission/Permission';
+import { useAuth } from '../../modules/AuthContext';
+//import Permission from '../Permission/Permission';
 
 interface MenuListProps {
   collapsed?: boolean;
@@ -25,7 +26,8 @@ interface MenuListProps {
 const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
   const intl = useIntl();
   const navigate = useNavigate();
-  const iconStyle = !collapsed ? { paddingLeft: '24px' } : undefined; // For permission items
+  const { user } = useAuth();
+  //const iconStyle = !collapsed ? { paddingLeft: '24px' } : undefined; // For permission items
 
   return (
     <Menu mode='inline' className='menu-bar'>
@@ -85,16 +87,17 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         </Menu.Item>
       </Menu.SubMenu>
 
-      {/* Permissionlardan dolayı düzgün görüntülenmiyor. inline css ile sorun çözüldü şimdilik */}
-      <Permission roles={['Admin']}>
+      {/* Permissionlardan dolayı düzgün görüntülenmiyor. Bu yüzden burada manuel olarak yazdık */}
+      {/* <Permission roles={['Admin']}> */}
+      {user && user.roles.includes('Admin') && (
         <Menu.SubMenu
           key='adminPanel'
-          icon={<DesktopOutlined style={iconStyle} />}
+          icon={<DesktopOutlined />}
           title={intl.formatMessage(layoutResources.adminPanel)}
         >
           <Menu.Item
             key='userPanel'
-            icon={<UserOutlined style={iconStyle} />}
+            icon={<UserOutlined />}
             onClick={() => navigate('/user-panel')}
           >
             {intl.formatMessage(layoutResources.userPanel)}
@@ -102,13 +105,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
 
           <Menu.Item
             key='rolePanel'
-            icon={<UserSwitchOutlined style={iconStyle} />}
+            icon={<UserSwitchOutlined />}
             // onClick={() => navigate('/role-panel')}
           >
             {intl.formatMessage(layoutResources.rolePanel)}
           </Menu.Item>
         </Menu.SubMenu>
-      </Permission>
+      )}
+      {/* </Permission> */}
 
       <Menu.SubMenu
         key='settings'

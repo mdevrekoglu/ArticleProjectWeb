@@ -68,6 +68,18 @@ const affiliationResources = defineMessages({
   affiliationName: {
     id: 'affiliationMessages.affiliationName',
     defaultMessage: 'Affiliation Name'
+  },
+  fetchFromScopus: {
+    id: 'affiliationMessages.fetchFromScopus',
+    defaultMessage: 'Fetch Affiliation'
+  },
+  updateUserViaScopus: {
+    id: 'affiliationMessages.updateUserViaScopus',
+    defaultMessage: 'Update Affiliation via Scopus'
+  },
+  enterScopusId: {
+    id: 'affiliationMessages.enterScopusId',
+    defaultMessage: 'Enter Scopus ID'
   }
 });
 
