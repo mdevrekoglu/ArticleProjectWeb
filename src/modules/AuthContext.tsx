@@ -13,6 +13,7 @@ import {
 } from '../pages/Authentication/Login/models';
 import ApiService from './ApiService';
 import { jwtDecode } from 'jwt-decode';
+import Loader from '../components/Loader/Loader';
 
 type Props = {
   children: ReactNode;
@@ -119,6 +120,13 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     setUser(null);
   };
 
+  const setLocalStorage = (token: string, refreshToken?: string) => {
+    localStorage.setItem('authToken', token);
+    localStorage.setItem('refreshToken', refreshToken || '');
+    setAuthenticated(true);
+    setUserFromToken(jwtDecode<any>(token));
+  };
+
   const setUserFromToken = (decodedToken: any) => {
     const user: UserModel = {
       userFirstName:
@@ -151,9 +159,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   };
 
   const login = (token: string, refreshToken?: string) => {
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('refreshToken', refreshToken || '');
-    setAuthenticated(true);
+    setLocalStorage(token, refreshToken);
     navigate('/home');
   };
 
@@ -166,7 +172,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     <AuthContext.Provider
       value={{ authenticated, user, login, logout, loading }}
     >
-      {children}
+      {loading ? <Loader /> : children}
     </AuthContext.Provider>
   );
 };

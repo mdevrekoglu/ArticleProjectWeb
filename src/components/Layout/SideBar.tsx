@@ -34,7 +34,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
         width={200}
         style={{ height: '100vh', position: 'fixed', left: 0 }}
       >
-        <MenuList />
+        <MenuList collapsed={collapsed} />
       </Sider>
       <Header
         className='header'

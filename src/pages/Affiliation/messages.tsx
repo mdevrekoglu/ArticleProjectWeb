@@ -60,6 +60,14 @@ const affiliationResources = defineMessages({
   anErrorOccurred: {
     id: 'affiliationMessages.anErrorOccurred',
     defaultMessage: 'An error occurred!'
+  },
+  scopusId: {
+    id: 'affiliationMessages.scopusId',
+    defaultMessage: 'Scopus ID'
+  },
+  affiliationName: {
+    id: 'affiliationMessages.affiliationName',
+    defaultMessage: 'Affiliation Name'
   }
 });
 

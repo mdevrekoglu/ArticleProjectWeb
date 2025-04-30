@@ -81,7 +81,7 @@ const AffiliationFilter: React.FC<AffiliationFilterProps> = ({ form }) => {
           </DataPageFormItem>
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
     </Form>
   );
 };

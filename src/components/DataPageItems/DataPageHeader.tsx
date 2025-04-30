@@ -43,8 +43,10 @@ interface DataPageHeaderProps {
   loading: boolean;
   onSearchClick?: () => void;
   onClearClick?: () => void;
-  onNewItemClick?: (id?: number) => void;
+  onNewItemClick?: (id?: any) => void;
   onImportExcelClick?: () => void;
+  extraButton?: React.ReactElement;
+  extraButtonPermission?: string[];
 }
 
 const { useToken } = theme;
@@ -56,7 +58,9 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
   onSearchClick,
   onClearClick,
   onNewItemClick,
-  onImportExcelClick
+  onImportExcelClick,
+  extraButton,
+  extraButtonPermission
 }) => {
   const intl = useIntl();
   const { token } = useToken();
@@ -101,6 +105,12 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
               {intl.formatMessage(messages.dataCount)} : {dataCount}
             </Text>
           </>
+        )}
+
+        {extraButton && (
+          <Permission roles={extraButtonPermission || ['Admin']}>
+            {extraButton}
+          </Permission>
         )}
 
         <Permission roles={['Admin']}>
@@ -180,7 +190,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
         )}
       </Form.Item>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
     </div>
   );
 };

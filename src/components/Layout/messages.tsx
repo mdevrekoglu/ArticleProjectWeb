@@ -14,9 +14,9 @@ const layoutResources = defineMessages({
     id: 'layoutResources.article',
     defaultMessage: 'Article'
   },
-  author: {
-    id: 'layoutResources.author',
-    defaultMessage: 'Author'
+  researcher: {
+    id: 'layoutResources.researcher',
+    defaultMessage: 'Researcher'
   },
   facility: {
     id: 'layoutResources.facility',
@@ -41,6 +41,18 @@ const layoutResources = defineMessages({
   findCollaborator: {
     id: 'layoutResources.findCollaborator',
     defaultMessage: 'Find Collaborator'
+  },
+  userPanel: {
+    id: 'layoutResources.userPanel',
+    defaultMessage: 'User Panel'
+  },
+  rolePanel: {
+    id: 'layoutResources.rolePanel',
+    defaultMessage: 'Role Panel'
+  },
+  adminPanel: {
+    id: 'layoutResources.adminPanel',
+    defaultMessage: 'Admin Panel'
   }
 });
 

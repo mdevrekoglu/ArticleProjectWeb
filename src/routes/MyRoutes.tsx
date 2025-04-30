@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Login from '../pages/Authentication/Login/Login';
 import Register from '../pages/Authentication/Register/Register';
@@ -13,13 +12,15 @@ import PrivateLayout from './PrivateLayout';
 import Faculty from '../pages/Faculty/Faculty';
 import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
 import Loader from '../components/Loader/Loader';
+import UserPanel from '../pages/UserPanel/UserPanel';
+import Researcher from '../pages/Researcher/Researcher';
 import Department from '../pages/Department/Department';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
 
   if (loading) {
-    return <Loader />; // Show loader while authentication is being checked
+    return <Loader />;
   }
 
   if (!authenticated) {
@@ -33,7 +34,7 @@ const MyRoutes = () => {
   const { authenticated, loading } = useAuth();
 
   if (loading) {
-    return <Loader />; // Show loader globally
+    return <Loader />;
   }
 
   return (
@@ -62,6 +63,8 @@ const MyRoutes = () => {
           <Route path='/faculty' element={<Faculty />} />
           <Route path='/department' element={<Department />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
+          <Route path='/user-panel' element={<UserPanel />} />
+          <Route path='/researcher' element={<Researcher />} />
         </Route>
       </Route>
 
