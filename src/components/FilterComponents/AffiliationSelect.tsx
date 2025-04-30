@@ -30,14 +30,14 @@ const { Option } = Select;
 interface AffiliationSelectProps {
   mode?: 'multiple' | 'single';
   disabled?: boolean;
-  initialValue?: BaseGetOptionsOutputModel;
+  initialOption?: BaseGetOptionsOutputModel;
   rules?: any[];
 }
 
 const AffiliationSelect: React.FC<AffiliationSelectProps> = ({
   mode = 'multiple',
   disabled = false,
-  initialValue,
+  initialOption,
   rules = []
 }) => {
   const intl = useIntl();
@@ -45,8 +45,8 @@ const AffiliationSelect: React.FC<AffiliationSelectProps> = ({
   const [options, setOptions] = useState<BaseGetOptionsOutputModel[]>([]);
 
   useEffect(() => {
-    setOptions(initialValue ? [initialValue] : []);
-  }, [initialValue]);
+    setOptions(initialOption ? [initialOption] : []);
+  }, [initialOption]);
 
   // Debounced fetch function
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +88,7 @@ const AffiliationSelect: React.FC<AffiliationSelectProps> = ({
       <Select
         mode={mode === 'multiple' ? 'multiple' : undefined}
         placeholder={intl.formatMessage(messages.enterKeyword)}
-        defaultValue={initialValue?.id}
+        defaultValue={initialOption?.id}
         onSearch={fetchAffiliations}
         notFoundContent={loading ? <Spin size='small' /> : null}
         filterOption={false}

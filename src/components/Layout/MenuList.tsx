@@ -68,6 +68,14 @@ const MenuList = () => {
         >
           {intl.formatMessage(layoutResources.faculty)}
         </Menu.Item>
+
+        <Menu.Item
+          key='department'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/department')}
+        >
+          {intl.formatMessage(layoutResources.department)}
+        </Menu.Item>
       </Menu.SubMenu>
 
       <Menu.SubMenu

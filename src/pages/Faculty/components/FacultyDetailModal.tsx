@@ -211,7 +211,7 @@ const FacultyDetailModal: React.FC<FacultyDetailModalProps> = ({
 
           <Col xs={24} sm={16}>
             <AffiliationSelect
-              initialValue={
+              initialOption={
                 entity
                   ? { id: entity.affiliationId, name: entity.affiliationName }
                   : undefined

@@ -13,6 +13,7 @@ import PrivateLayout from './PrivateLayout';
 import Faculty from '../pages/Faculty/Faculty';
 import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
 import Loader from '../components/Loader/Loader';
+import Department from '../pages/Department/Department';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -59,6 +60,7 @@ const MyRoutes = () => {
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
+          <Route path='/department' element={<Department />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
         </Route>
       </Route>
