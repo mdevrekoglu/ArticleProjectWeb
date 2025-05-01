@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, notification } from 'antd';
+import { Button, Form, notification } from 'antd';
 import AffiliationFilter from './components/AffiliationFilter';
 import {
   affiliationDataListModel,
@@ -11,6 +11,8 @@ import { useIntl } from 'react-intl';
 import AffiliationTable from './components/AffiliationTable';
 import ApiService from '../../modules/ApiService';
 import AffiliationDetailModal from './components/AffiliationDetailModal'; // Import the modal
+import { SyncOutlined } from '@ant-design/icons';
+import AffiliationFetchModal from './components/AffiliationFetchModal';
 
 const Affiliation: React.FC = () => {
   const intl = useIntl();
@@ -33,6 +35,8 @@ const Affiliation: React.FC = () => {
   // Modal control
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
+
+  const [isFetchModalVisible, setIsFetchModalVisible] = useState(false);
 
   // Fetch data function with pagination and sorting
   const fetchData = async (
@@ -118,6 +122,23 @@ const Affiliation: React.FC = () => {
     }
   };
 
+  const handleFetchModelOpen = () => {
+    setIsFetchModalVisible(true);
+  };
+
+  const handleFetchModalClose = (isDataChanged?: boolean) => {
+    setIsFetchModalVisible(false);
+
+    if (isDataChanged) {
+      fetchData(
+        pagination.current,
+        pagination.pageSize,
+        sorter.field,
+        sorter.order
+      );
+    }
+  };
+
   return (
     <div>
       <DataPageHeader
@@ -134,6 +155,23 @@ const Affiliation: React.FC = () => {
         onNewItemClick={handleModelOpen}
         loading={loading}
         dataCount={data?.count}
+        extraButton={
+          <Button
+            type='default'
+            style={{
+              alignItems: 'center',
+              borderRadius: '5px',
+              padding: '0 12px',
+              margin: '8px 4px',
+              float: 'right'
+            }}
+            icon={<SyncOutlined />}
+            loading={loading}
+            onClick={handleFetchModelOpen}
+          >
+            {intl.formatMessage(affiliationResources.fetchFromScopus)}
+          </Button>
+        }
       />
 
       <AffiliationFilter form={form} />
@@ -155,6 +193,11 @@ const Affiliation: React.FC = () => {
         open={isModalVisible}
         handleModalClose={handleModalClose}
         inputId={selectedId}
+      />
+
+      <AffiliationFetchModal
+        open={isFetchModalVisible}
+        handleModalClose={handleFetchModalClose}
       />
     </div>
   );

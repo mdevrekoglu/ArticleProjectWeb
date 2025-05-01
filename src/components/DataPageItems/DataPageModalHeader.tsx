@@ -46,6 +46,7 @@ interface DataPageModalHeaderProps {
   loading: boolean;
   isNewItem: boolean;
   id?: number;
+  showPreTitle?: boolean;
   onCloseClick: () => void;
   onClick: () => void;
   onClearClick?: () => void;
@@ -56,6 +57,7 @@ const { useToken } = theme;
 const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
   pageTitle,
   loading = false,
+  showPreTitle = true,
   isNewItem,
   id,
   onCloseClick,
@@ -94,7 +96,7 @@ const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
                 float: 'left'
               }}
             >
-              {intl.formatMessage(messages.create)} {pageTitle}
+              {showPreTitle && intl.formatMessage(messages.create)} {pageTitle}
             </Text>
           </>
         ) : (
@@ -115,7 +117,7 @@ const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
                 float: 'left'
               }}
             >
-              {intl.formatMessage(messages.update)} {pageTitle}
+              {showPreTitle && intl.formatMessage(messages.update)} {pageTitle}
             </Text>
 
             {id && (
