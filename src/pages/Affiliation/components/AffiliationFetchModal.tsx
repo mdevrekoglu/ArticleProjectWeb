@@ -1,5 +1,5 @@
 import { Col, Form, InputNumber, Modal, notification, Row } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import DataPageModalHeader from '../../../components/DataPageItems/DataPageModalHeader';
@@ -21,6 +21,12 @@ const AffiliationFetchModal: React.FC<AffiliationFetchModalProps> = ({
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isDataChanged, setIsDataChanged] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      form.resetFields();
+    }
+  }, [open, form]);
 
   const handleClick = async () => {
     setLoading(true);
@@ -79,12 +85,15 @@ const AffiliationFetchModal: React.FC<AffiliationFetchModalProps> = ({
       closeIcon={null}
     >
       <DataPageModalHeader
-        pageTitle={intl.formatMessage(affiliationResources.updateUserViaScopus)}
+        pageTitle={intl.formatMessage(
+          affiliationResources.fetchAffiliationViaScopus
+        )}
         loading={loading}
         onCloseClick={() => handleModalClose(isDataChanged)}
         isNewItem={false}
         onClick={handleClick}
         id={undefined}
+        showPreTitle={false}
       />
 
       <Form

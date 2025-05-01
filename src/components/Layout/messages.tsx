@@ -53,6 +53,10 @@ const layoutResources = defineMessages({
   adminPanel: {
     id: 'layoutResources.adminPanel',
     defaultMessage: 'Admin Panel'
+  },
+  journal: {
+    id: 'layoutResources.journal',
+    defaultMessage: 'Journal'
   }
 });
 

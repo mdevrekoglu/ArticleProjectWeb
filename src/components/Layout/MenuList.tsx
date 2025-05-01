@@ -1,7 +1,7 @@
 import {
   BankOutlined,
-  BookOutlined,
   DesktopOutlined,
+  FileSearchOutlined,
   HomeOutlined,
   RightCircleOutlined,
   SearchOutlined,
@@ -41,7 +41,11 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         {intl.formatMessage(layoutResources.home)}
       </Menu.Item>
 
-      <Menu.Item key='article' icon={<BookOutlined />}>
+      <Menu.Item
+        key='article'
+        icon={<FileSearchOutlined />}
+        onClick={() => navigate('/search-article')}
+      >
         {intl.formatMessage(layoutResources.article)}
       </Menu.Item>
 
@@ -84,6 +88,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
           onClick={() => navigate('/researcher')}
         >
           {intl.formatMessage(layoutResources.researcher)}
+        </Menu.Item>
+
+        <Menu.Item
+          key='journal'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/journal')}
+        >
+          {intl.formatMessage(layoutResources.journal)}
         </Menu.Item>
       </Menu.SubMenu>
 
