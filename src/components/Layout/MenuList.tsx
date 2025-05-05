@@ -97,6 +97,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         >
           {intl.formatMessage(layoutResources.journal)}
         </Menu.Item>
+
+        <Menu.Item
+          key='department'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/department')}
+        >
+          {intl.formatMessage(layoutResources.department)}
+        </Menu.Item>
       </Menu.SubMenu>
 
       {/* Permissionlardan dolayı düzgün görüntülenmiyor. Bu yüzden burada manuel olarak yazdık */}

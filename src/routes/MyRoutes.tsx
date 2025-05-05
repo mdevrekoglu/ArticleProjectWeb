@@ -16,6 +16,7 @@ import UserPanel from '../pages/UserPanel/UserPanel';
 import Researcher from '../pages/Researcher/Researcher';
 import SearchArticle from '../pages/SearchArticle/SearchArticle';
 import Journal from '../pages/Journal/Journal';
+import Department from '../pages/Department/Department';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -62,6 +63,7 @@ const MyRoutes = () => {
           <Route path='/home' element={<Home />} />
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
+          <Route path='/department' element={<Department />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='/user-panel' element={<UserPanel />} />
           <Route path='/researcher' element={<Researcher />} />
