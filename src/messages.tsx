@@ -40,6 +40,14 @@ const commonResources = defineMessages({
   roles: {
     id: 'commonResources.roles',
     defaultMessage: 'Roles'
+  },
+  title: {
+    id: 'commonResources.title',
+    defaultMessage: 'Title'
+  },
+  enterTitle: {
+    id: 'commonResources.enterTitle',
+    defaultMessage: 'Enter title'
   }
 });
 

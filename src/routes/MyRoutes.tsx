@@ -14,6 +14,8 @@ import SearchCollaborator from '../pages/SearchCollaborator/SearchCollaborator';
 import Loader from '../components/Loader/Loader';
 import UserPanel from '../pages/UserPanel/UserPanel';
 import Researcher from '../pages/Researcher/Researcher';
+import SearchArticle from '../pages/SearchArticle/SearchArticle';
+import Journal from '../pages/Journal/Journal';
 import Department from '../pages/Department/Department';
 
 const PrivateRoutes = () => {
@@ -65,6 +67,8 @@ const MyRoutes = () => {
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='/user-panel' element={<UserPanel />} />
           <Route path='/researcher' element={<Researcher />} />
+          <Route path='/search-article' element={<SearchArticle />} />
+          <Route path='/journal' element={<Journal />} />
         </Route>
       </Route>
 

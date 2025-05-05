@@ -1,5 +1,5 @@
 import { Col, Form, InputNumber, Modal, notification, Row } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import DataPageModalHeader from '../../../components/DataPageItems/DataPageModalHeader';
 import researcherResources from '../messages';
@@ -21,6 +21,12 @@ const ResearcherFetchModal: React.FC<ResearcherFetchModalProps> = ({
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isDataChanged, setIsDataChanged] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      form.resetFields();
+    }
+  }, [open, form]);
 
   const handleClick = async () => {
     setLoading(true);

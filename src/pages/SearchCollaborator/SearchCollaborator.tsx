@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DataPageHeader from '../../components/DataPageItems/DataPageHeader';
 import { useIntl } from 'react-intl';
 import searchCollaboratorResources from './messages';
