@@ -57,6 +57,18 @@ const DepartmentTable: React.FC<DepartmentTableProps> = ({
         </div>
       )
     },
+    {
+      title: intl.formatMessage(departmentResources.StudentCount),
+      dataIndex: 'studentCount',
+      key: 'studentCount',
+      sorter: true
+    },
+    {
+      title: intl.formatMessage(departmentResources.ResearcherCount),
+      dataIndex: 'researcherCount',
+      key: 'researcherCount',
+      sorter: true
+    }
   ];
 
   return (

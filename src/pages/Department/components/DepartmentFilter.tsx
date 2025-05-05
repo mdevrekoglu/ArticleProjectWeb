@@ -17,7 +17,13 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
   const affiliationId = useWatch('affiliationId', form);
 
   return (
-    <Form form={form} layout='inline' style={{ width: '100%' }}>
+    <Form form={form}
+    layout='inline' 
+    style={{
+       width: '100%' 
+       }}
+       >
+
       <Row gutter={[4, 4]} style={{ width: '100%' }}>
         <Col xs={24} sm={8}>
           <DataPageFormItem
@@ -38,6 +44,28 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
         <Col xs={24} sm={8}>
           <FacultySearch mode='single' selectedAffiliationId={affiliationId}/>
 
+        </Col>
+
+        <Col xs={24} sm={8}>
+          <DataPageFormItem
+            label={intl.formatMessage(departmentResources.StudentCount)}
+            name='city'
+          >
+            <Input
+              placeholder={intl.formatMessage(departmentResources.enterStudentCount)}
+            />
+          </DataPageFormItem>
+        </Col>
+
+        <Col xs={24} sm={8}>
+          <DataPageFormItem
+            label={intl.formatMessage(departmentResources.ResearcherCount)}
+            name='city'
+          >
+            <Input
+              placeholder={intl.formatMessage(departmentResources.enterResearcherCount)}
+            />
+          </DataPageFormItem>
         </Col>
 
       </Row>

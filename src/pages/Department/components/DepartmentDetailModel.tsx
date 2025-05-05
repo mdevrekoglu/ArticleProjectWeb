@@ -106,7 +106,7 @@ const DepartmentDetailModal: React.FC<DepartmentDetailModalProps> = ({
           const departmentCreateData: departmentCreateInputModel = {
             ...form.getFieldsValue()
           };
-
+          console.log("girdi")
           const response = await ApiService.UsePost<departmentCreateInputModel, departmentDataOutputModel>(
             '/Department/Create',
             departmentCreateData
@@ -225,6 +225,31 @@ const DepartmentDetailModal: React.FC<DepartmentDetailModalProps> = ({
               selectedAffiliationId={entity ? undefined : affiliationId}
             />
           </Col>
+
+          <Col xs={24} sm={8}>
+            <DataPageFormItem
+              label={intl.formatMessage(departmentResources.StudentCount)}
+              name='studentCount'
+              rules={[{ required: true }]}
+            >
+              <Input
+                placeholder={intl.formatMessage(departmentResources.enterStudentCount)}
+              />
+            </DataPageFormItem>
+          </Col>
+
+          <Col xs={24} sm={8}>
+            <DataPageFormItem
+              label={intl.formatMessage(departmentResources.ResearcherCount)}
+              name='researcherCount'
+              rules={[{ required: true }]}
+            >
+              <Input
+                placeholder={intl.formatMessage(departmentResources.enterResearcherCount)}
+              />
+            </DataPageFormItem>
+          </Col>
+
         </Row>
       </Form>
     </Modal>
