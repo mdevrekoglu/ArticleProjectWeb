@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ArticleProjectWeb/static/css/main.187954d2.css",
+    "main.js": "/ArticleProjectWeb/static/js/main.b7399798.js",
+    "static/media/DeuLogoBlue.png": "/ArticleProjectWeb/static/media/DeuLogoBlue.1f96ac51e237a26e9c69.png",
+    "static/media/DeuLogoWhite.png": "/ArticleProjectWeb/static/media/DeuLogoWhite.a04ae31a35b972526070.png",
+    "index.html": "/ArticleProjectWeb/index.html",
+    "main.187954d2.css.map": "/ArticleProjectWeb/static/css/main.187954d2.css.map",
+    "main.b7399798.js.map": "/ArticleProjectWeb/static/js/main.b7399798.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.187954d2.css",
+    "static/js/main.b7399798.js"
+  ]
+}
