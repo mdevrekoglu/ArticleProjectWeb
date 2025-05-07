@@ -4,7 +4,6 @@ import { Table, TableProps } from 'antd';
 import { useIntl } from 'react-intl';
 import researcherResources from '../messages';
 import affiliationResources from '../../Affiliation/messages';
-//import Permission from '../../../components/Permission/Permission'; // Update butonu gelince
 
 interface ResearcherTableProps {
   data?: researcherDataListModel;

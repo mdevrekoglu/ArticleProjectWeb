@@ -13,14 +13,14 @@ import { Menu } from 'antd';
 import './styles.css';
 import { useIntl } from 'react-intl';
 import ToggleThemeButton from '../ThemeItems/ToggleThemeButton';
-import Logo from '../Logos/Logo';
 import { useNavigate } from 'react-router';
 import layoutResources from './messages';
 import { useAuth } from '../../modules/AuthContext';
+import ArimsLogo from '../Logos/ArimsLogo';
 //import Permission from '../Permission/Permission';
 
 interface MenuListProps {
-  collapsed?: boolean;
+  collapsed: boolean;
 }
 
 const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
@@ -31,7 +31,7 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
 
   return (
     <Menu mode='inline' className='menu-bar'>
-      <Logo />
+      <ArimsLogo collapsed={collapsed} />
 
       <Menu.Item
         key='home'
