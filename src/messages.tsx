@@ -48,6 +48,18 @@ const commonResources = defineMessages({
   enterTitle: {
     id: 'commonResources.enterTitle',
     defaultMessage: 'Enter title'
+  },
+  publishYear: {
+    id: 'commonResources.publishYear',
+    defaultMessage: 'Publish Year'
+  },
+  enterPublishYear: {
+    id: 'commonResources.enterYear',
+    defaultMessage: 'Enter Publish Year'
+  },
+  arims: {
+    id: 'commonResources.arims',
+    defaultMessage: 'ARIMS'
   }
 });
 

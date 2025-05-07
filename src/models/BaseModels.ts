@@ -20,6 +20,7 @@ export interface keyInputModel {
 
 export interface BaseGetOptionsByKeywordModel {
   keyword: string;
+  optionsSize?: number;
 }
 
 export interface BaseGetOptionsOutputModel {

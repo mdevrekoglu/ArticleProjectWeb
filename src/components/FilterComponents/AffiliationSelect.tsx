@@ -93,6 +93,7 @@ const AffiliationSelect: React.FC<AffiliationSelectProps> = ({
         notFoundContent={loading ? <Spin size='small' /> : null}
         filterOption={false}
         style={{ width: '100%' }}
+        maxTagCount={'responsive'}
         disabled={disabled}
         allowClear
         showSearch

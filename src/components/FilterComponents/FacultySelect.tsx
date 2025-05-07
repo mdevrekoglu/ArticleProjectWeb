@@ -50,7 +50,6 @@ const FacultySelect: React.FC<FacultySelectProps> = ({
     setOptions(initialOption ? [initialOption] : []);
   }, [initialOption]);
 
-
   // Debounced fetch function
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchFacultys = useCallback(
@@ -82,9 +81,9 @@ const FacultySelect: React.FC<FacultySelectProps> = ({
   );
 
   return (
-    <DataPageFormItem 
-      label={intl.formatMessage(messages.faculty)} 
-      name={mode === 'multiple' ? 'facultyIds' : 'facultyId'} 
+    <DataPageFormItem
+      label={intl.formatMessage(messages.faculty)}
+      name={mode === 'multiple' ? 'facultyIds' : 'facultyId'}
       rules={rules}
     >
       <Select
@@ -92,14 +91,15 @@ const FacultySelect: React.FC<FacultySelectProps> = ({
         placeholder={intl.formatMessage(messages.enterKeyword)}
         defaultValue={initialOption?.id}
         onSearch={fetchFacultys}
-        notFoundContent={loading ? <Spin size="small" /> : null}
+        notFoundContent={loading ? <Spin size='small' /> : null}
         filterOption={false}
         style={{ width: '100%' }}
+        maxTagCount={'responsive'}
         disabled={disabled || (!selectedAffiliationId && !initialOption)}
         allowClear
         showSearch
       >
-        {options.map((option) => (
+        {options.map(option => (
           <Option key={option.id} value={option.id}>
             {option.name}
           </Option>
@@ -110,4 +110,3 @@ const FacultySelect: React.FC<FacultySelectProps> = ({
 };
 
 export default FacultySelect;
-
