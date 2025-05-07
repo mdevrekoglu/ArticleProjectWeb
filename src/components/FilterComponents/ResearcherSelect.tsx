@@ -50,7 +50,7 @@ const ResearcherSelect: React.FC<ResearcherSelectProps> = ({
 
   // Debounced fetch function
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const fetchJournals = useCallback(
+  const fetchResearchers = useCallback(
     debounce(async (searchTerm: string) => {
       if (searchTerm.length < 2) return; // Only fetch if at least 2 characters
 
@@ -89,7 +89,7 @@ const ResearcherSelect: React.FC<ResearcherSelectProps> = ({
         mode={mode === 'multiple' ? 'multiple' : undefined}
         placeholder={intl.formatMessage(messages.enterKeyword)}
         defaultValue={initialOption?.id}
-        onSearch={fetchJournals}
+        onSearch={fetchResearchers}
         notFoundContent={loading ? <Spin size='small' /> : null}
         filterOption={false}
         style={{

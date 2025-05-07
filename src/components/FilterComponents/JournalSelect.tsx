@@ -82,7 +82,7 @@ const JournalSelect: React.FC<JournalSelectProps> = ({
   return (
     <DataPageFormItem
       label={intl.formatMessage(messages.journal)}
-      name={mode === 'multiple' ? 'journalIds' : 'affiliationId'}
+      name={mode === 'multiple' ? 'journalIds' : 'journalId'}
       rules={rules}
     >
       <Select
