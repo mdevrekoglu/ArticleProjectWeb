@@ -17,6 +17,8 @@ import Researcher from '../pages/Researcher/Researcher';
 import SearchArticle from '../pages/SearchArticle/SearchArticle';
 import Journal from '../pages/Journal/Journal';
 import Department from '../pages/Department/Department';
+import UserNotification from '../pages/UserNotification/UserNotification';
+import Notification from '../pages/Notification/Notification';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -69,6 +71,8 @@ const MyRoutes = () => {
           <Route path='/researcher' element={<Researcher />} />
           <Route path='/search-article' element={<SearchArticle />} />
           <Route path='/journal' element={<Journal />} />
+          <Route path='/user-notification' element={<UserNotification />} />
+          <Route path='/notification' element={<Notification />} />
         </Route>
       </Route>
 
