@@ -32,6 +32,7 @@ export interface affiliationUpdateInputModel {
   address: string;
   country: string;
   organizationType: string;
+  scopusId: number;
 }
 
 export interface affiliationCreateInputModel {
@@ -40,4 +41,5 @@ export interface affiliationCreateInputModel {
   address: string;
   country: string;
   organizationType: string;
+  scopusId: number;
 }

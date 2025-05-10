@@ -35,14 +35,8 @@
   transform: translateX(32%);
 }
 
-.collapse-btn {
-  padding: 0 10px;
-}
-
-.log-out-btn {
-  position: absolute;
+.header-btn {
   float: right;
-  right: 0;
   margin-top: 15px;
   margin-right: 10px;
 }

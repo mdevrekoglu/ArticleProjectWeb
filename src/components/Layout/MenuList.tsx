@@ -1,5 +1,6 @@
 import {
   BankOutlined,
+  BellOutlined,
   DesktopOutlined,
   FileSearchOutlined,
   HomeOutlined,
@@ -61,6 +62,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         {intl.formatMessage(layoutResources.findCollaborator)}
       </Menu.Item>
 
+      <Menu.Item
+        key='user-notification'
+        icon={<BellOutlined />}
+        onClick={() => navigate('/user-notification')}
+      >
+        {intl.formatMessage(layoutResources.notification)}
+      </Menu.Item>
+
       <Menu.SubMenu
         key='facility'
         icon={<BankOutlined />}
@@ -83,6 +92,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         </Menu.Item>
 
         <Menu.Item
+          key='department'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/department')}
+        >
+          {intl.formatMessage(layoutResources.department)}
+        </Menu.Item>
+
+        <Menu.Item
           key='researcher'
           icon={<RightCircleOutlined />}
           onClick={() => navigate('/researcher')}
@@ -96,14 +113,6 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
           onClick={() => navigate('/journal')}
         >
           {intl.formatMessage(layoutResources.journal)}
-        </Menu.Item>
-
-        <Menu.Item
-          key='department'
-          icon={<RightCircleOutlined />}
-          onClick={() => navigate('/department')}
-        >
-          {intl.formatMessage(layoutResources.department)}
         </Menu.Item>
       </Menu.SubMenu>
 
@@ -129,6 +138,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
             // onClick={() => navigate('/role-panel')}
           >
             {intl.formatMessage(layoutResources.rolePanel)}
+          </Menu.Item>
+
+          <Menu.Item
+            key='notification'
+            icon={<BellOutlined />}
+            onClick={() => navigate('/notification')}
+          >
+            {intl.formatMessage(layoutResources.notification)}
           </Menu.Item>
         </Menu.SubMenu>
       )}

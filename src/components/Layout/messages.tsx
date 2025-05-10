@@ -57,6 +57,10 @@ const layoutResources = defineMessages({
   journal: {
     id: 'layoutResources.journal',
     defaultMessage: 'Journal'
+  },
+  notification: {
+    id: 'layoutResources.notification',
+    defaultMessage: 'Notification'
   }
 });
 
