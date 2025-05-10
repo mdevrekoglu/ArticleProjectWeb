@@ -1,4 +1,4 @@
-import { Col, Form, Input, Modal, notification, Row } from 'antd';
+import { Col, Form, Input, InputNumber, Modal, notification, Row } from 'antd';
 import React, { useEffect, useState } from 'react';
 import DataPageModalHeader from '../../../components/DataPageItems/DataPageModalHeader';
 import { useIntl } from 'react-intl';
@@ -251,6 +251,23 @@ const AffiliationDetailModal: React.FC<AffiliationDetailModalProps> = ({
                 placeholder={intl.formatMessage(
                   affiliationResources.enterOrganizationType
                 )}
+              />
+            </DataPageFormItem>
+          </Col>
+
+          <Col xs={24} sm={8}>
+            <DataPageFormItem
+              label={intl.formatMessage(affiliationResources.scopusId)}
+              name='scopusId'
+              rules={[{ required: true }]}
+            >
+              <InputNumber
+                placeholder={intl.formatMessage(
+                  affiliationResources.enterScopusId
+                )}
+                style={{ width: '100%' }}
+                controls={false}
+                min={0}
               />
             </DataPageFormItem>
           </Col>
