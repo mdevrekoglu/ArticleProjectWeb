@@ -1,9 +1,10 @@
-import { Col, Divider, Form, Input, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import facultyResources from '../messages';
 import AffiliationSearch from '../../../components/FilterComponents/AffiliationSelect';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface FacultyFilterProps {
   form: any;
@@ -32,7 +33,7 @@ const FacultyFilter: React.FC<FacultyFilterProps> = ({ form }) => {
           <AffiliationSearch />
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };

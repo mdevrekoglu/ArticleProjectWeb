@@ -58,6 +58,7 @@ const FacultyTable: React.FC<FacultyTableProps> = ({
       columns={columns}
       bordered
       rowKey='id'
+      size='small'
       pagination={pagination}
       onChange={onSortChange}
       loading={loading}

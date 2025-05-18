@@ -9,14 +9,6 @@ const departmentResources = defineMessages({
     id: 'departmentResources.departmentName',
     defaultMessage: 'Name'
   },
-  anErrorOccurred: {
-    id: 'departmentResources.anErrorOccurred',
-    defaultMessage: 'An error occurred!'
-  },
-  unknownError: {
-    id: 'departmentResources.unknownError',
-    defaultMessage: 'Unknown error occurred. Please try again later.'
-  },
   enterDepartmentName: {
     id: 'departmentResources.enterDepartmentName',
     defaultMessage: 'Enter department name'

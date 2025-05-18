@@ -1,4 +1,4 @@
-import { Col, Divider, Form, Input, InputNumber, Row } from 'antd';
+import { Col, Form, Input, InputNumber, Row } from 'antd';
 
 import React from 'react';
 import { useIntl } from 'react-intl';
@@ -8,6 +8,7 @@ import commonResources from '../../../messages';
 import searchArticleResources from '../messages';
 import JournalSelect from '../../../components/FilterComponents/JournalSelect';
 import ResearcherSelect from '../../../components/FilterComponents/ResearcherSelect';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface SearchArticleFilterProps {
   form: any;
@@ -67,7 +68,7 @@ const SearchArticleFilter: React.FC<SearchArticleFilterProps> = ({ form }) => {
           <ResearcherSelect mode='multiple' />
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };

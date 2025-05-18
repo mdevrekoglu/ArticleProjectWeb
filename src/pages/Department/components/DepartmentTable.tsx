@@ -77,6 +77,7 @@ const DepartmentTable: React.FC<DepartmentTableProps> = ({
       columns={columns}
       bordered
       rowKey='id'
+      size='small'
       pagination={pagination}
       onChange={onSortChange}
       loading={loading}

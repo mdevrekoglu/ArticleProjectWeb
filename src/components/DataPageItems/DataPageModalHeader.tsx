@@ -4,9 +4,10 @@ import {
   OrderedListOutlined,
   SaveOutlined
 } from '@ant-design/icons';
-import { Button, Divider, Form, theme, Typography } from 'antd';
+import { Button, Form, theme, Typography } from 'antd';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
+import CustomDivider from './CustomDivider';
 
 const { Text } = Typography;
 
@@ -203,7 +204,7 @@ const DataPageModalHeader: React.FC<DataPageModalHeaderProps> = ({
         )}
       </Form.Item>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </div>
   );
 };
