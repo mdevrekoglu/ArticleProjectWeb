@@ -60,6 +60,26 @@ const commonResources = defineMessages({
   arims: {
     id: 'commonResources.arims',
     defaultMessage: 'ARIMS'
+  },
+  status: {
+    id: 'commonResources.status',
+    defaultMessage: 'Status'
+  },
+  createdDate: {
+    id: 'commonResources.createdDate',
+    defaultMessage: 'Created Date'
+  },
+  active: {
+    id: 'commonResources.active',
+    defaultMessage: 'Active'
+  },
+  notActive: {
+    id: 'commonResources.notActive',
+    defaultMessage: 'Not Active'
+  },
+  remove: {
+    id: 'commonResources.remove',
+    defaultMessage: 'Remove'
   }
 });
 

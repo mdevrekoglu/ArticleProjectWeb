@@ -189,6 +189,7 @@ const SearchArticleTable: React.FC<SearchArticleTableProps> = ({
         columns={visibleColumns}
         bordered
         rowKey='scopusId'
+        size='small'
         pagination={pagination}
         onChange={onSortChange}
         loading={loading}

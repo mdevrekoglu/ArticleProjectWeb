@@ -5,19 +5,12 @@ import debounce from 'lodash/debounce';
 import ApiService from '../../modules/ApiService';
 import DataPageFormItem from '../DataPageItems/DataPageFormItem';
 import { BaseGetOptionsOutputModel } from '../../models/BaseModels';
+import commonResources from '../../messages';
 
 const messages = defineMessages({
   enterKeyword: {
     id: 'facultySelect.enterKeyword',
     defaultMessage: 'Enter keyword'
-  },
-  unknownError: {
-    id: 'facultySelect.unknownError',
-    defaultMessage: 'Unknown error occurred. Please try again later.'
-  },
-  anErrorOccurred: {
-    id: 'facultySelect.anErrorOccurred',
-    defaultMessage: 'An error occurred!'
   },
   faculty: {
     id: 'facultySelect.faculty',
@@ -69,7 +62,7 @@ const FacultySelect: React.FC<FacultySelectProps> = ({
         setOptions(response || []);
       } catch (error) {
         notification.error({
-          message: intl.formatMessage(messages.unknownError),
+          message: intl.formatMessage(commonResources.unknownError),
           placement: 'topRight',
           duration: 5
         });

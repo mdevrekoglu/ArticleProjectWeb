@@ -27,15 +27,22 @@ interface IsActiveSelectProps {
   onChange?: (value: boolean | null) => void;
   name?: string;
   rules?: any[];
+  disabled?: boolean;
 }
 
 const IsActiveSelect: React.FC<IsActiveSelectProps> = ({
   value = undefined,
   onChange,
   name = 'isActive',
-  rules = []
+  rules = [],
+  disabled = false
 }) => {
   const intl = useIntl();
+
+  const radioButtonStyle = {
+    fontSize: '12px',
+    padding: '0px 10px'
+  };
 
   return (
     <DataPageFormItem
@@ -51,23 +58,15 @@ const IsActiveSelect: React.FC<IsActiveSelectProps> = ({
         style={{
           display: 'flex'
         }}
+        disabled={disabled}
       >
-        <Radio.Button
-          value={undefined}
-          style={{ fontSize: '12px', padding: '0px 10px' }}
-        >
+        <Radio.Button value={undefined} style={radioButtonStyle}>
           {intl.formatMessage(messages.all)}
         </Radio.Button>
-        <Radio.Button
-          value={true}
-          style={{ fontSize: '12px', padding: '0px 10px' }}
-        >
+        <Radio.Button value={true} style={radioButtonStyle}>
           {intl.formatMessage(messages.active)}
         </Radio.Button>
-        <Radio.Button
-          value={false}
-          style={{ fontSize: '12px', padding: '0px 10px' }}
-        >
+        <Radio.Button value={false} style={radioButtonStyle}>
           {intl.formatMessage(messages.notActive)}
         </Radio.Button>
       </Radio.Group>

@@ -1,9 +1,10 @@
-import { Col, Divider, Form, Row } from 'antd';
+import { Col, Form, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import searchCollaboratorResources from '../messages';
 import TextArea from 'antd/es/input/TextArea';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface SearchCollaboratorFilterProps {
   form: any;
@@ -41,7 +42,7 @@ const SearchCollaboratorFilter: React.FC<SearchCollaboratorFilterProps> = ({
           </DataPageFormItem>
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };

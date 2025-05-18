@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Button, theme, Badge, notification } from 'antd';
 import MenuList from './MenuList';
 import {
@@ -27,39 +27,26 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
   const navigate = useNavigate();
   const { token } = theme.useToken();
   const [count, setCount] = useState<number>();
-  const notificationCountPromise = useRef<Promise<void> | null>(null);
 
   const toggleCollapsed = () => {
     onCollapseChange(!collapsed);
   };
 
   const fetchNotificationCount = async () => {
-    if (!notificationCountPromise.current) {
-      notificationCountPromise.current = new Promise(
-        async (resolve, reject) => {
-          try {
-            const response = await ApiService.UseGet<null, number>(
-              '/Notification/GetNotificationCount',
-              null
-            );
-            setCount(response);
-            resolve();
-          } catch (error) {
-            notification.error({
-              message: intl.formatMessage(commonResources.unknownError),
-              placement: 'topRight',
-              duration: 5,
-              style: { width: '400px' }
-            });
-            //(error);
-          } finally {
-            notificationCountPromise.current = null;
-          }
-        }
+    try {
+      const response = await ApiService.UseGet<null, number>(
+        '/Notification/GetNotificationCount',
+        null
       );
+      setCount(response);
+    } catch (error) {
+      notification.error({
+        message: intl.formatMessage(commonResources.unknownError),
+        placement: 'topRight',
+        duration: 5,
+        style: { width: '400px' }
+      });
     }
-
-    return notificationCountPromise.current;
   };
 
   const handleNotificationClick = () => {

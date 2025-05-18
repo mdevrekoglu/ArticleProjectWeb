@@ -1,6 +1,6 @@
 // CustomSearchButton.tsx
 import React from 'react';
-import { Button, Divider, Form, theme, Typography } from 'antd';
+import { Button, Form, theme, Typography } from 'antd';
 import {
   ClearOutlined,
   EnvironmentOutlined,
@@ -11,6 +11,7 @@ import {
 import { defineMessages, useIntl } from 'react-intl';
 import Title from 'antd/es/typography/Title';
 import Permission from '../Permission/Permission';
+import CustomDivider from './CustomDivider';
 
 const { Text } = Typography;
 
@@ -190,7 +191,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
         )}
       </Form.Item>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </div>
   );
 };

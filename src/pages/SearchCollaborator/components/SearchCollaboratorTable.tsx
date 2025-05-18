@@ -45,6 +45,7 @@ const SearchCollaboratorTable: React.FC<SearchCollaboratorProps> = ({
       bordered
       pagination={false}
       rowKey='id'
+      size='small'
       loading={loading}
     />
   );

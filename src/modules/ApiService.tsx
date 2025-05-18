@@ -2,6 +2,32 @@ import { notification } from 'antd';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 
+const isDateLike = (value: any): boolean => {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    typeof value.format === 'function'
+  );
+};
+
+const convertDates = (obj: any): any => {
+  if (Array.isArray(obj)) {
+    return obj.map(convertDates);
+  } else if (obj && typeof obj === 'object') {
+    const result: Record<string, any> = {};
+    for (const key in obj) {
+      const value = obj[key];
+      if (isDateLike(value)) {
+        result[key] = value.format('YYYY/MM/DD');
+      } else {
+        result[key] = convertDates(value);
+      }
+    }
+    return result;
+  }
+  return obj;
+};
+
 class ApiService {
   private axiosInstance: AxiosInstance;
 
@@ -14,8 +40,10 @@ class ApiService {
       headers: {
         'Content-Type': 'application/json'
       },
-      paramsSerializer: params =>
-        qs.stringify(params, { arrayFormat: 'repeat' }) // Custom serialization for arrays
+      paramsSerializer: params => {
+        const cleanedParams = convertDates(params);
+        return qs.stringify(cleanedParams, { arrayFormat: 'repeat' });
+      }
     });
 
     // Interceptor to add token from local storage

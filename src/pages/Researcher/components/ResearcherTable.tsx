@@ -91,6 +91,7 @@ const ResearcherTable: React.FC<ResearcherTableProps> = ({
       columns={columns}
       bordered
       rowKey='id'
+      size='small'
       pagination={pagination}
       onChange={onSortChange}
       loading={loading}
