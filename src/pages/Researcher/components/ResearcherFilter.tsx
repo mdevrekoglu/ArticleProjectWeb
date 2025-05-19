@@ -1,10 +1,11 @@
-import { Col, Divider, Form, Input, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import * as React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import researcherResources from '../messages';
 import AffiliationSearch from '../../../components/FilterComponents/AffiliationSelect';
 import IsActiveSelect from '../../../components/FilterComponents/IsActiveSelect';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface ResearcherFilterProps {
   form: any;
@@ -123,7 +124,7 @@ const ResearcherFilter: React.FC<ResearcherFilterProps> = ({ form }) => {
         </Col>
       </Row>
 
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };

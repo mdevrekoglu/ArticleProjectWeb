@@ -8,6 +8,7 @@ import ApiService from '../../modules/ApiService';
 import DepartmentFilter from './components/DepartmentFilter';
 import DepartmentTable from './components/DepartmentTable';
 import DepartmentDetailModal from './components/DepartmentDetailModel';
+import commonResources from '../../messages';
 
 const Department: React.FC = () => {
   const intl = useIntl();
@@ -48,15 +49,15 @@ const Department: React.FC = () => {
       };
 
       const response = await ApiService.UseGet<
-      departmentSearchInputModel,
-      departmentDataListModel
+        departmentSearchInputModel,
+        departmentDataListModel
       >('/Department/GetAllPagedBySearchModel', searchData);
 
       if (response.isSuccessed) {
         setData(response);
       } else {
         notification.error({
-          message: intl.formatMessage(departmentResources.anErrorOccurred),
+          message: intl.formatMessage(commonResources.anErrorOccurred),
           description: response.messages.join('\n'),
           placement: 'topRight',
           duration: 5,
@@ -71,7 +72,7 @@ const Department: React.FC = () => {
       });
     } catch (error) {
       notification.error({
-        message: intl.formatMessage(departmentResources.unknownError),
+        message: intl.formatMessage(commonResources.unknownError),
         placement: 'topRight',
         duration: 5,
         style: { width: '400px' }

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Row, Col, Input, Form, Divider } from 'antd';
+import { Row, Col, Input, Form } from 'antd';
 import { useIntl } from 'react-intl';
 import affiliationResources from '../messages';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface AffiliationFilterProps {
   form: any;
@@ -81,7 +82,7 @@ const AffiliationFilter: React.FC<AffiliationFilterProps> = ({ form }) => {
           </DataPageFormItem>
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };

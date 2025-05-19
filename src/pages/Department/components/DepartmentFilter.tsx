@@ -2,7 +2,6 @@ import { Col, Divider, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
-import facultyResources from '../messages';
 import AffiliationSearch from '../../../components/FilterComponents/AffiliationSelect';
 import FacultySearch from '../../../components/FilterComponents/FacultySelect';
 import departmentResources from '../messages';
@@ -17,13 +16,13 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
   const affiliationId = useWatch('affiliationId', form);
 
   return (
-    <Form form={form}
-    layout='inline' 
-    style={{
-       width: '100%' 
-       }}
-       >
-
+    <Form
+      form={form}
+      layout='inline'
+      style={{
+        width: '100%'
+      }}
+    >
       <Row gutter={[4, 4]} style={{ width: '100%' }}>
         <Col xs={24} sm={8}>
           <DataPageFormItem
@@ -38,12 +37,10 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
           </DataPageFormItem>
         </Col>
         <Col xs={24} sm={8}>
-          <AffiliationSearch mode='single'/>
-
+          <AffiliationSearch mode='single' />
         </Col>
         <Col xs={24} sm={8}>
-          <FacultySearch mode='single' selectedAffiliationId={affiliationId}/>
-
+          <FacultySearch mode='single' selectedAffiliationId={affiliationId} />
         </Col>
 
         <Col xs={24} sm={8}>
@@ -52,7 +49,9 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
             name='city'
           >
             <Input
-              placeholder={intl.formatMessage(departmentResources.enterStudentCount)}
+              placeholder={intl.formatMessage(
+                departmentResources.enterStudentCount
+              )}
             />
           </DataPageFormItem>
         </Col>
@@ -63,11 +62,12 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
             name='city'
           >
             <Input
-              placeholder={intl.formatMessage(departmentResources.enterResearcherCount)}
+              placeholder={intl.formatMessage(
+                departmentResources.enterResearcherCount
+              )}
             />
           </DataPageFormItem>
         </Col>
-
       </Row>
       <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
     </Form>

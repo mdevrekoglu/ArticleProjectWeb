@@ -27,3 +27,8 @@ export interface BaseGetOptionsOutputModel {
   id: number;
   name: string;
 }
+
+export interface BaseGetOptionsStringOutputModel {
+  id: string;
+  name: string;
+}

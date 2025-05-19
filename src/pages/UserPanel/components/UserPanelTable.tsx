@@ -100,6 +100,7 @@ const UserPanelTable: React.FC<UserPanelTableProps> = ({
       columns={columns}
       bordered
       rowKey='id'
+      size='small'
       pagination={pagination}
       onChange={onSortChange}
       loading={loading}

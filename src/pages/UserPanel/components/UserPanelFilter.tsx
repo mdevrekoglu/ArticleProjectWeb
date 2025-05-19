@@ -1,8 +1,9 @@
-import { Col, Divider, Form, Input, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import userPanelResources from '../messages';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface UserPanelFilterProps {
   form: any;
@@ -49,7 +50,7 @@ const UserPanelFilter: React.FC<UserPanelFilterProps> = ({ form }) => {
           </DataPageFormItem>
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }} />
+      <CustomDivider />
     </Form>
   );
 };
