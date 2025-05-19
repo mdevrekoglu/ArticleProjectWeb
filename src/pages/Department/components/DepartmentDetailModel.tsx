@@ -106,7 +106,7 @@ const DepartmentDetailModal: React.FC<DepartmentDetailModalProps> = ({
           const departmentCreateData: departmentCreateInputModel = {
             ...form.getFieldsValue()
           };
-          console.log("girdi")
+         
           const response = await ApiService.UsePost<departmentCreateInputModel, departmentDataOutputModel>(
             '/Department/Create',
             departmentCreateData
