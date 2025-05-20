@@ -55,6 +55,7 @@ const UserNotification: React.FC = () => {
 
   useEffect(() => {
     loadMoreData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

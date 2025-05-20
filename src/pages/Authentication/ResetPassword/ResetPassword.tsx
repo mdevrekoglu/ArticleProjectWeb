@@ -7,10 +7,10 @@ import DeuLogo from '../../../components/Logos/DeuLogo';
 import FormItem from 'antd/es/form/FormItem';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import authenticationResources from '../messages';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
 import { userPasswordResetModel } from './models';
 import ApiService from '../../../modules/ApiService';
 import { messageOutputModel } from '../../../models/BaseModels';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 
 const { useToken } = theme;
 const ResetPassword = () => {
@@ -181,7 +181,7 @@ const ResetPassword = () => {
         </FormItem>
 
         <FormItem className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </FormItem>
       </Form>
     </div>

@@ -39,9 +39,6 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isDataChanged, setIsDataChanged] = useState(false);
-  const [entity, setEntity] = useState<
-    notificationDataOutputModel | undefined
-  >();
 
   const [id, setId] = useState<number | undefined>();
   const isNewItem = id === undefined || id === null;
@@ -62,7 +59,6 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
     if (!open) {
       form.resetFields();
       setTargetUsers([]);
-      setEntity(undefined);
     } else if (!isNewItem) {
       const fetchData = async () => {
         setLoading(true);
@@ -76,7 +72,6 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
 
           if (response.isSuccessed) {
             form.setFieldsValue(response);
-            setEntity(response);
             setTargetUsers(
               response.targets.map(user => ({
                 id: user.userId,
@@ -141,7 +136,6 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
           setId(response.id);
           form.setFieldsValue(response);
           setIsDataChanged(true);
-          setEntity(response);
         } else {
           notification.error({
             message: intl.formatMessage(commonResources.anErrorOccurred),
@@ -173,7 +167,6 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
 
           form.setFieldsValue(response);
           setIsDataChanged(true);
-          setEntity(response);
         } else {
           notification.error({
             message: intl.formatMessage(commonResources.anErrorOccurred),
@@ -307,15 +300,12 @@ const NotificationDetailModal: React.FC<NotificationDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <FacultySelect
               mode='single'
-              selectedAffiliationId={entity ? undefined : affiliationId}
+              selectedAffiliationId={affiliationId}
             />
           </Col>
 
           <Col xs={24} sm={8}>
-            <DepartmentSelect
-              mode='single'
-              selectedFacultyId={entity ? undefined : facultyId}
-            />
+            <DepartmentSelect mode='single' selectedFacultyId={facultyId} />
           </Col>
 
           <CustomDivider>

@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Button, theme, Badge, notification } from 'antd';
+import {
+  Layout,
+  Button,
+  theme,
+  Badge,
+  Typography,
+  Space,
+  Avatar,
+  Card
+} from 'antd';
 import MenuList from './MenuList';
 import {
   BellOutlined,
-  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons';
 import './styles.css';
-import { useAuth } from '../../modules/AuthContext';
 import ApiService from '../../modules/ApiService';
-import commonResources from '../../messages';
-import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router';
+import { UserCredentialsModel } from '../../models/UserModel';
 
 const { Header, Sider } = Layout;
+const { Text } = Typography;
 
 interface SideBarProps {
   collapsed: boolean;
@@ -22,11 +29,11 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
-  const intl = useIntl();
-  const { logout } = useAuth();
   const navigate = useNavigate();
   const { token } = theme.useToken();
   const [count, setCount] = useState<number>();
+  const [userCredentials, setUserCredentials] =
+    useState<UserCredentialsModel>();
 
   const toggleCollapsed = () => {
     onCollapseChange(!collapsed);
@@ -39,14 +46,17 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
         null
       );
       setCount(response);
-    } catch (error) {
-      notification.error({
-        message: intl.formatMessage(commonResources.unknownError),
-        placement: 'topRight',
-        duration: 5,
-        style: { width: '400px' }
-      });
-    }
+    } catch (error) {}
+  };
+
+  const fetchUserCredentials = async () => {
+    try {
+      const response = await ApiService.UseGet<null, UserCredentialsModel>(
+        '/Authentication/GetUserCredentials',
+        null
+      );
+      setUserCredentials(response);
+    } catch (error) {}
   };
 
   const handleNotificationClick = () => {
@@ -55,6 +65,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
   };
 
   useEffect(() => {
+    fetchUserCredentials();
     fetchNotificationCount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -71,6 +82,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
       >
         <MenuList collapsed={collapsed} />
       </Sider>
+
       <Header
         className='header'
         style={{
@@ -78,28 +90,68 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, onCollapseChange }) => {
           width: '100%',
           backgroundColor: token.colorBgContainer,
           zIndex: 9,
-          borderBottom: `1px solid ${token.colorSplit}`
+          borderBottom: `1px solid ${token.colorSplit}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingRight: '20px'
         }}
       >
-        <Button
-          type='text'
-          style={{
-            marginTop: '10px',
-            marginLeft: collapsed ? '80px' : '200px'
-          }}
-          onClick={toggleCollapsed}
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        />
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Button
+            type='text'
+            style={{
+              marginLeft: collapsed ? '80px' : '200px'
+            }}
+            onClick={toggleCollapsed}
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          />
 
-        <Button
-          icon={<LogoutOutlined />}
-          className='header-btn'
-          onClick={logout}
-        />
+          {userCredentials && (
+            <Text strong style={{ fontSize: 18, paddingLeft: '30px' }}>
+              {[
+                userCredentials.affiliationName,
+                userCredentials.facultyName,
+                userCredentials.departmentName
+              ]
+                .filter(Boolean)
+                .join(' - ')}
+            </Text>
+          )}
+        </div>
 
-        <Badge count={count} className='header-btn' size='small'>
-          <Button icon={<BellOutlined />} onClick={handleNotificationClick} />
-        </Badge>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {userCredentials && (
+            <Card
+              styles={{ body: { padding: '6px 12px' } }}
+              style={{
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                borderRadius: 8
+              }}
+            >
+              <Space align='center'>
+                <Avatar
+                  size='large'
+                  src={`data:image/jpeg;base64,${userCredentials.image}`}
+                />
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Text
+                    strong
+                  >{`${userCredentials.firstName} ${userCredentials.lastName}`}</Text>
+                  <Text type='secondary' style={{ fontSize: 12 }}>
+                    {userCredentials.email}
+                  </Text>
+                </div>
+                <Badge count={count} className='header-btn' size='small'>
+                  <Button
+                    icon={<BellOutlined />}
+                    onClick={handleNotificationClick}
+                  />
+                </Badge>
+              </Space>
+            </Card>
+          )}
+        </div>
       </Header>
     </>
   );
