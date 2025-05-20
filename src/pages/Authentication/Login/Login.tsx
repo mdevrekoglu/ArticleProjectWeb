@@ -10,7 +10,7 @@ import { UserTypes } from '../enums';
 import DeuPatternBackground from '../components/DeuPatternBackground';
 import { userLogInModel, userLogInResponseModel } from './models';
 import ApiService from '../../../modules/ApiService';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 import DeuLogo from '../../../components/Logos/DeuLogo';
 import { useAuth } from '../../../modules/AuthContext';
 
@@ -193,7 +193,7 @@ const Login = () => {
         </Form.Item>
 
         <Form.Item className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </Form.Item>
       </Form>
     </div>

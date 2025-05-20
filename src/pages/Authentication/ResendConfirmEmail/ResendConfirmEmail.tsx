@@ -8,11 +8,11 @@ import DeuLogo from '../../../components/Logos/DeuLogo';
 import authenticationResources from '../messages';
 import { MailOutlined } from '@ant-design/icons';
 import SelectDomain from '../components/SelectDomain';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
 import '../styles.css';
 import { userRequestModel } from '../models';
 import ApiService from '../../../modules/ApiService';
 import { messageOutputModel } from '../../../models/BaseModels';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 
 const { useToken } = theme;
 const ResendConfirmEmail = () => {
@@ -132,7 +132,7 @@ const ResendConfirmEmail = () => {
         </Form.Item>
 
         <Form.Item className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </Form.Item>
       </Form>
     </div>

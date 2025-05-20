@@ -12,8 +12,8 @@ import '../styles.css';
 import ApiService from '../../../modules/ApiService';
 import { userRegisterModel } from './models';
 import { messageOutputModel } from '../../../models/BaseModels';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
 import DeuLogo from '../../../components/Logos/DeuLogo';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 
 const { useToken } = theme;
 const Register = () => {
@@ -259,7 +259,7 @@ const Register = () => {
         </Form.Item>
 
         <Form.Item className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </Form.Item>
       </Form>
     </div>

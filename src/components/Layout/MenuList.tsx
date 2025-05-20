@@ -1,9 +1,11 @@
 import {
   BankOutlined,
   BellOutlined,
+  BgColorsOutlined,
   DesktopOutlined,
   FileSearchOutlined,
   HomeOutlined,
+  LogoutOutlined,
   RightCircleOutlined,
   SearchOutlined,
   SettingOutlined,
@@ -13,11 +15,12 @@ import {
 import { Menu } from 'antd';
 import './styles.css';
 import { useIntl } from 'react-intl';
-import ToggleThemeButton from '../ThemeItems/ToggleThemeButton';
 import { useNavigate } from 'react-router';
 import layoutResources from './messages';
 import { useAuth } from '../../modules/AuthContext';
 import ArimsLogo from '../Logos/ArimsLogo';
+import ToggleThemeSwitch from '../ThemeItems/ToggleThemeSwitch';
+import { UseTheme } from '../../modules/ThemeProvider';
 //import Permission from '../Permission/Permission';
 
 interface MenuListProps {
@@ -28,6 +31,8 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
   const intl = useIntl();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { logout } = useAuth();
+  const { toggleTheme } = UseTheme();
   //const iconStyle = !collapsed ? { paddingLeft: '24px' } : undefined; // For permission items
 
   return (
@@ -155,11 +160,23 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         key='settings'
         icon={<SettingOutlined />}
         title={intl.formatMessage(layoutResources.settings)}
-      ></Menu.SubMenu>
+      >
+        <Menu.Item
+          key='theme-toggle'
+          icon={<BgColorsOutlined />}
+          onClick={toggleTheme}
+        >
+          <ToggleThemeSwitch />
+        </Menu.Item>
 
-      <div className='toggle-theme-btn-container'>
-        <ToggleThemeButton />
-      </div>
+        <Menu.Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
+          {intl.formatMessage(layoutResources.logout)}
+        </Menu.Item>
+      </Menu.SubMenu>
+
+      {/* <div className='toggle-theme-btn-container'>
+        <ToggleThemeSwitch />
+      </div> */}
     </Menu>
   );
 };

@@ -61,6 +61,10 @@ const layoutResources = defineMessages({
   notification: {
     id: 'layoutResources.notification',
     defaultMessage: 'Notification'
+  },
+  logout: {
+    id: 'layoutResources.logout',
+    defaultMessage: 'Logout'
   }
 });
 

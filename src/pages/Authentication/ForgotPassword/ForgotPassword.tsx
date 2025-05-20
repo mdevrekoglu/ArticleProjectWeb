@@ -13,7 +13,7 @@ import ApiService from '../../../modules/ApiService';
 import { messageOutputModel } from '../../../models/BaseModels';
 import { useNavigate } from 'react-router-dom';
 import DeuLogo from '../../../components/Logos/DeuLogo';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 
 const { useToken } = theme;
 const ForgotPassword = () => {
@@ -132,7 +132,7 @@ const ForgotPassword = () => {
         </Form.Item>
 
         <Form.Item className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </Form.Item>
       </Form>
     </div>

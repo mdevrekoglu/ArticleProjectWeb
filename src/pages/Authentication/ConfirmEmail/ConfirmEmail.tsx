@@ -7,7 +7,7 @@ import DeuLogo from '../../../components/Logos/DeuLogo';
 import FormItem from 'antd/es/form/FormItem';
 import { MailOutlined } from '@ant-design/icons';
 import authenticationResources from '../messages';
-import ToggleThemeButton from '../../../components/ThemeItems/ToggleThemeButton';
+import ToggleThemeSwitch from '../../../components/ThemeItems/ToggleThemeSwitch';
 import ApiService from '../../../modules/ApiService';
 import { userConfirmEmailModel } from './model';
 import { messageOutputModel } from '../../../models/BaseModels';
@@ -113,7 +113,7 @@ const ConfirmEmail = () => {
         </FormItem>
 
         <FormItem className='custom-form-item'>
-          <ToggleThemeButton />
+          <ToggleThemeSwitch />
         </FormItem>
       </Form>
     </div>
