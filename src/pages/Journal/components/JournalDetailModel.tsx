@@ -11,6 +11,7 @@ import {
 } from '../models';
 import ApiService from '../../../modules/ApiService';
 import { keyInputModel } from '../../../models/BaseModels';
+import QuartileSelect from '../../Authentication/components/QuartileSelect';
 
 interface JournalDetailModalProps {
   open: boolean;
@@ -192,7 +193,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.journalName)}
-              name='journalName'
+              name='name'
               rules={[{ required: true }]}
             >
               <Input
@@ -204,7 +205,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.AbbreviationName)}
-              name='AbbreviationName'
+              name='abbreviationName'
               rules={[{ required: true }]}
             >
               <Input
@@ -216,7 +217,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.ISSN)}
-              name='ISSN'
+              name='issn'
               rules={[{ required: true }]}
             >
               <Input
@@ -228,7 +229,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.EISSN)}
-              name='EISSN'
+              name='eissn'
               rules={[{ required: true }]}
             >
               <Input
@@ -240,10 +241,11 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.JIF)}
-              name='JIF'
+              name='jif'
               rules={[{ required: true }]}
             >
               <Input
+                type='number'
                 placeholder={intl.formatMessage(journalResources.enterJIF)}
               />
             </DataPageFormItem>
@@ -252,10 +254,11 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.JIF5Years)}
-              name='JIF5Years'
+              name='jiF5Years'
               rules={[{ required: true }]}
             >
               <Input
+                type='number'
                 placeholder={intl.formatMessage(journalResources.enterJIF5Years)}
               />
             </DataPageFormItem>
@@ -264,7 +267,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.CategoryName)}
-              name='CategoryName'
+              name='categoryName'
               rules={[{ required: true }]}
             >
               <Input
@@ -274,24 +277,24 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           </Col>
 
           <Col xs={24} sm={8}>
-            <DataPageFormItem
-              label={intl.formatMessage(journalResources.Quartile)}
-              name='Quartile'
-              rules={[{ required: true }]}
-            >
-              <Input
-                placeholder={intl.formatMessage(journalResources.enterQuartile)}
+          <DataPageFormItem
+             label={intl.formatMessage(journalResources.Quartile)}
+             name='quartile'
+           >
+             <QuartileSelect
+                 placeholder={intl.formatMessage(journalResources.enterQuartile)}
               />
-            </DataPageFormItem>
-          </Col>
+          </DataPageFormItem>
+        </Col>
 
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.Rank)}
-              name='Rank'
+              name='rank'
               rules={[{ required: true }]}
             >
               <Input
+                type='number'
                 placeholder={intl.formatMessage(journalResources.enterRank)}
               />
             </DataPageFormItem>
@@ -300,10 +303,11 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.TotalJournals)}
-              name='TotalJournals'
+              name='totalJournals'
               rules={[{ required: true }]}
             >
               <Input
+                type='number'
                 placeholder={intl.formatMessage(journalResources.enterTotalJournals)}
               />
             </DataPageFormItem>
@@ -312,10 +316,11 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({
           <Col xs={24} sm={8}>
             <DataPageFormItem
               label={intl.formatMessage(journalResources.Year)}
-              name='Year'
+              name='year'
               rules={[{ required: true }]}
             >
               <Input
+                type='number'
                 placeholder={intl.formatMessage(journalResources.enterYear)}
               />
             </DataPageFormItem>

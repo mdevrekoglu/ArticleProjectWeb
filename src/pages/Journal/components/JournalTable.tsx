@@ -25,8 +25,8 @@ const JournalTable: React.FC<JournalTableProps> = ({
   const columns = [
     {
       title: intl.formatMessage(journalResources.journal),
-      dataIndex: 'journalName',
-      key: 'journalName',
+      dataIndex: 'name',
+      key: 'name',
       sorter: true,
       render: (text: string, record: journalDataModel) => (
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -44,62 +44,56 @@ const JournalTable: React.FC<JournalTableProps> = ({
     },
     {
       title: intl.formatMessage(journalResources.AbbreviationName),
-      dataIndex: 'AbbreviationName',
-      key: 'AbbreviationName',
+      dataIndex: 'abbreviationName',
+      key: 'abbreviationName',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.ISSN),
-      dataIndex: 'ISSN',
-      key: 'ISSN',
+      dataIndex: 'issn',
+      key: 'issn',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.EISSN),
-      dataIndex: 'EISSN',
-      key: 'EISSN',
+      dataIndex: 'eissn',
+      key: 'eissn',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.JIF),
-      dataIndex: 'JIF',
-      key: 'JIF',
+      dataIndex: 'jif',
+      key: 'jif',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.JIF5Years),
-      dataIndex: 'JIF5Years',
-      key: 'JIF5Years',
+      dataIndex: 'jiF5Years',
+      key: 'jiF5Years',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.CategoryName),
-      dataIndex: 'CategoryName',
-      key: 'CategoryName',
+      dataIndex: 'categoryName',
+      key: 'categoryName',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.Quartile),
-      dataIndex: 'Quartile',
-      key: 'Quartile',
+      dataIndex: 'quartile',
+      key: 'quartile',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.Rank),
-      dataIndex: 'Rank',
-      key: 'Rank',
-      sorter: true
-    },
-    {
-      title: intl.formatMessage(journalResources.TotalJournals),
-      dataIndex: 'TotalJournals',
-      key: 'TotalJournals',
+      dataIndex: 'rank',
+      key: 'rank',
       sorter: true
     },
     {
       title: intl.formatMessage(journalResources.Year),
-      dataIndex: 'Year',
-      key: 'Year',
+      dataIndex: 'year',
+      key: 'year',
       sorter: true
     }
   ];

@@ -7,6 +7,10 @@ export interface journalSearchInputModel {
     eissn: string;
     year: number;
     categoryId: number;
+    categoryName: string;
+    quartile: number;
+    rank: number;
+    totalJournals:number;
   }
   
 export interface journalDataListModel extends baseListModel {
@@ -23,7 +27,11 @@ export interface journalDataModel {
     jif5years: number;
     categorId: number;
     categoryName: string;
+    quartile: number;
+    rank: number;
+    totalJournals:number;
     year: number;
+    
   }
 
 export interface journalDataOutputModel

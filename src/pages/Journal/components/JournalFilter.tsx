@@ -1,8 +1,9 @@
-import { Col, Divider, Input, Row } from "antd";
+import { Col, Divider, Input, InputNumber, Row } from "antd";
 import Form, { useWatch } from "antd/es/form/Form";
 import { useIntl } from "react-intl";
 import DataPageFormItem from "../../../components/DataPageItems/DataPageFormItem";
 import journalResources from "../messages";
+import QuartileSelect from "../../Authentication/components/QuartileSelect";
 
 interface JournalFilterProps {
   form: any;
@@ -24,7 +25,7 @@ const JournalFilter: React.FC<JournalFilterProps> = ({ form }) => {
         <Col xs={24} sm={8}>
           <DataPageFormItem
             label={intl.formatMessage(journalResources.journalName)}
-            name='journalName'
+            name='name'
           >
             <Input
               placeholder={intl.formatMessage(
@@ -37,7 +38,7 @@ const JournalFilter: React.FC<JournalFilterProps> = ({ form }) => {
         <Col xs={24} sm={8}>
           <DataPageFormItem
             label={intl.formatMessage(journalResources.ISSN)}
-            name='ISSN'
+            name='issn'
           >
             <Input
               placeholder={intl.formatMessage(
@@ -50,7 +51,7 @@ const JournalFilter: React.FC<JournalFilterProps> = ({ form }) => {
         <Col xs={24} sm={8}>
           <DataPageFormItem
             label={intl.formatMessage(journalResources.EISSN)}
-            name='EISSN'
+            name='eissn'
           >
             <Input
               placeholder={intl.formatMessage(
@@ -62,34 +63,8 @@ const JournalFilter: React.FC<JournalFilterProps> = ({ form }) => {
 
         <Col xs={24} sm={8}>
           <DataPageFormItem
-            label={intl.formatMessage(journalResources.JIF)}
-            name='JIF'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                journalResources.enterJIF
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
-
-        <Col xs={24} sm={8}>
-          <DataPageFormItem
-            label={intl.formatMessage(journalResources.JIF5Years)}
-            name='JIF5Years'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                journalResources.enterJIF5Years
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
-
-        <Col xs={24} sm={8}>
-          <DataPageFormItem
             label={intl.formatMessage(journalResources.CategoryName)}
-            name='CategoryName'
+            name='categoryName'
           >
             <Input
               placeholder={intl.formatMessage(
@@ -101,49 +76,24 @@ const JournalFilter: React.FC<JournalFilterProps> = ({ form }) => {
 
         <Col xs={24} sm={8}>
           <DataPageFormItem
-            label={intl.formatMessage(journalResources.Quartile)}
-            name='Quartile'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                journalResources.enterQuartile
-              )}
-            />
+             label={intl.formatMessage(journalResources.Quartile)}
+             name='quartile'
+           >
+             <QuartileSelect
+                 placeholder={intl.formatMessage(journalResources.enterQuartile)}
+              />
           </DataPageFormItem>
         </Col>
 
-        <Col xs={24} sm={8}>
-          <DataPageFormItem
-            label={intl.formatMessage(journalResources.Rank)}
-            name='Rank'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                journalResources.enterRank
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
-
-         <Col xs={24} sm={8}>
-          <DataPageFormItem
-            label={intl.formatMessage(journalResources.TotalJournals)}
-            name='TotalJournals'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                journalResources.enterTotalJournals
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
+       
 
          <Col xs={24} sm={8}>
           <DataPageFormItem
             label={intl.formatMessage(journalResources.Year)}
-            name='Year'
+            name='year'
           >
             <Input
+              type="number"
               placeholder={intl.formatMessage(
                 journalResources.enterYear
               )}
