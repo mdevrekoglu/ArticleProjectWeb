@@ -80,6 +80,14 @@ const commonResources = defineMessages({
   remove: {
     id: 'commonResources.remove',
     defaultMessage: 'Remove'
+  },
+  uploadSuccess: {
+    id: 'commonResources.uploadSuccess',
+    defaultMessage: 'Upload Success'
+  },
+  uploadFailed: {
+    id: 'commonResources.uploadFailed',
+    defaultMessage: 'Upload Failed'
   }
 });
 

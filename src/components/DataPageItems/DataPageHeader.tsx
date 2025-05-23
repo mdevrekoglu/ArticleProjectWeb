@@ -1,12 +1,13 @@
 // CustomSearchButton.tsx
 import React from 'react';
-import { Button, Form, theme, Typography } from 'antd';
+import { Button, Form, theme, Typography, Upload, UploadProps } from 'antd';
 import {
   ClearOutlined,
   EnvironmentOutlined,
   PlusOutlined,
   SearchOutlined,
-  UnorderedListOutlined
+  UnorderedListOutlined,
+  UploadOutlined
 } from '@ant-design/icons';
 import { defineMessages, useIntl } from 'react-intl';
 import Title from 'antd/es/typography/Title';
@@ -45,7 +46,7 @@ interface DataPageHeaderProps {
   onSearchClick?: () => void;
   onClearClick?: () => void;
   onNewItemClick?: (id?: any) => void;
-  onImportExcelClick?: () => void;
+  uploadProps?: UploadProps;
   extraButton?: React.ReactElement;
   extraButtonPermission?: string[];
 }
@@ -59,7 +60,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
   onSearchClick,
   onClearClick,
   onNewItemClick,
-  onImportExcelClick,
+  uploadProps,
   extraButton,
   extraButtonPermission
 }) => {
@@ -115,22 +116,23 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
         )}
 
         <Permission roles={['Admin']}>
-          {onImportExcelClick && (
-            <Button
-              type='default'
-              icon={<PlusOutlined />}
-              onClick={onImportExcelClick}
-              loading={loading}
-              style={{
-                alignItems: 'center',
-                borderRadius: '5px',
-                padding: '0 12px',
-                margin: '8px 4px',
-                float: 'right'
-              }}
-            >
-              {intl.formatMessage(messages.importExcel)}
-            </Button>
+          {uploadProps && (
+            <div style={{ float: 'right', margin: '8px 4px' }}>
+              <Upload {...uploadProps} showUploadList={false}>
+                <Button
+                  type='default'
+                  icon={<UploadOutlined />}
+                  loading={loading}
+                  style={{
+                    alignItems: 'center',
+                    borderRadius: '5px',
+                    padding: '0 12px'
+                  }}
+                >
+                  {intl.formatMessage(messages.importExcel)}
+                </Button>
+              </Upload>
+            </div>
           )}
         </Permission>
 

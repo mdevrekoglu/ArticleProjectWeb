@@ -116,6 +116,39 @@ class ApiService {
       throw error;
     }
   }
+
+  // POST Request for file upload (FormData)
+  async UsePostFormData<TResponse>(
+    url: string,
+    formData: FormData
+  ): Promise<TResponse> {
+    try {
+      const response = await this.axiosInstance.post<TResponse>(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data?.title) {
+        notification.error({
+          message: 'An unexpected error occurred',
+          description: error.response.data.title,
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      } else {
+        notification.error({
+          message: 'An unexpected error occurred',
+          placement: 'topRight',
+          duration: 5,
+          style: { width: '400px' }
+        });
+      }
+      throw error;
+    }
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

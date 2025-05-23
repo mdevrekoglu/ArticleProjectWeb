@@ -1,4 +1,4 @@
-import { Col, Divider, Form, Input, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
@@ -6,6 +6,7 @@ import AffiliationSearch from '../../../components/FilterComponents/AffiliationS
 import FacultySearch from '../../../components/FilterComponents/FacultySelect';
 import departmentResources from '../messages';
 import { useWatch } from 'antd/es/form/Form';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface DepartmentFilterProps {
   form: any;
@@ -42,34 +43,8 @@ const DepartmentFilter: React.FC<DepartmentFilterProps> = ({ form }) => {
         <Col xs={24} sm={8}>
           <FacultySearch mode='single' selectedAffiliationId={affiliationId} />
         </Col>
-
-        <Col xs={24} sm={8}>
-          <DataPageFormItem
-            label={intl.formatMessage(departmentResources.StudentCount)}
-            name='city'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                departmentResources.enterStudentCount
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
-
-        <Col xs={24} sm={8}>
-          <DataPageFormItem
-            label={intl.formatMessage(departmentResources.ResearcherCount)}
-            name='city'
-          >
-            <Input
-              placeholder={intl.formatMessage(
-                departmentResources.enterResearcherCount
-              )}
-            />
-          </DataPageFormItem>
-        </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <CustomDivider />
     </Form>
   );
 };
