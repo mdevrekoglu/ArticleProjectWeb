@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ArticleProjectWeb/static/css/main.521c0ac2.css",
-    "main.js": "/ArticleProjectWeb/static/js/main.175df28e.js",
+    "main.js": "/ArticleProjectWeb/static/js/main.f98b6bcf.js",
     "static/media/DeuLogoBlue.png": "/ArticleProjectWeb/static/media/DeuLogoBlue.1f96ac51e237a26e9c69.png",
     "static/media/Arims.png": "/ArticleProjectWeb/static/media/Arims.541978e1e2d9db6cec73.png",
     "static/media/DeuLogoWhite.png": "/ArticleProjectWeb/static/media/DeuLogoWhite.a04ae31a35b972526070.png",
     "index.html": "/ArticleProjectWeb/index.html",
     "main.521c0ac2.css.map": "/ArticleProjectWeb/static/css/main.521c0ac2.css.map",
-    "main.175df28e.js.map": "/ArticleProjectWeb/static/js/main.175df28e.js.map"
+    "main.f98b6bcf.js.map": "/ArticleProjectWeb/static/js/main.f98b6bcf.js.map"
   },
   "entrypoints": [
     "static/css/main.521c0ac2.css",
-    "static/js/main.175df28e.js"
+    "static/js/main.f98b6bcf.js"
   ]
 }
