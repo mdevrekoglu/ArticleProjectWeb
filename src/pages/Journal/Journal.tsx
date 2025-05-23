@@ -3,20 +3,20 @@ import { useIntl } from 'react-intl';
 import { journalDataListModel, journalSearchInputModel } from './models';
 import DataPageHeader from '../../components/DataPageItems/DataPageHeader';
 import journalResources from './messages';
-import { Form, notification } from 'antd';
+import { Form, message, notification, Upload, UploadProps } from 'antd';
 import ApiService from '../../modules/ApiService';
 import JournalFilter from './components/JournalFilter';
 import JournalTable from './components/JournalTable';
 import JournalDetailModal from './components/JournalDetailModel';
+import commonResources from '../../messages';
+import { messageOutputModel } from '../../models/BaseModels';
 
-const Journal : React.FC = () => {
-  // TODO: Yusuf aga buraya filtre tablo vb eklersin zaten backend de ekleyeceksin test edersin
-
+const Journal: React.FC = () => {
   const intl = useIntl();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<journalDataListModel>();
-  
+
   // Modal control
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
@@ -31,9 +31,9 @@ const Journal : React.FC = () => {
   const [sorter, setSorter] = useState<{
     field?: string;
     order?: 'ascend' | 'descend';
-  }>({});  
+  }>({});
 
- const fetchData = async (
+  const fetchData = async (
     page = 1,
     pageSize = 10,
     sortField?: string,
@@ -50,8 +50,8 @@ const Journal : React.FC = () => {
       };
 
       const response = await ApiService.UseGet<
-      journalSearchInputModel,
-      journalDataListModel
+        journalSearchInputModel,
+        journalDataListModel
       >('/Journal/GetAllPagedBySearchModel', searchData);
 
       if (response.isSuccessed) {
@@ -81,9 +81,54 @@ const Journal : React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };  
+  };
 
-const handleClear = () => {
+  const uploadProps: UploadProps = {
+    accept: '.xlsx',
+    showUploadList: false,
+    beforeUpload: file => {
+      const isExcel =
+        file.type ===
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      if (!isExcel) {
+        message.error(`${file.name} is not a valid .xlsx file`);
+      }
+      return isExcel || Upload.LIST_IGNORE;
+    },
+    customRequest: async ({ file, onSuccess, onError }) => {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append('File', file as File);
+
+      try {
+        const response = await ApiService.UsePostFormData<messageOutputModel>(
+          '/Journal/UploadExcel',
+          formData
+        );
+
+        if (response.isSuccessed) {
+          notification.success({
+            message: intl.formatMessage(commonResources.uploadSuccess),
+            description: response.messages.join('\n'),
+            placement: 'topRight',
+            duration: 5,
+            style: { width: '400px' }
+          });
+          onSuccess?.(response);
+        }
+      } catch (err) {
+        notification.error({
+          message: intl.formatMessage(commonResources.uploadFailed),
+          description: (err as Error).message
+        });
+        onError?.(err as Error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  const handleClear = () => {
     form.resetFields();
     setData(undefined);
     setPagination({ current: 1, pageSize: 10, total: 0 });
@@ -112,10 +157,7 @@ const handleClear = () => {
         sorter.order
       );
     }
-  };  
-
-
-  // TODO: Mehmet excel export ekleyeceğim
+  };
 
   return (
     <div>
@@ -131,6 +173,7 @@ const handleClear = () => {
         }
         onClearClick={handleClear}
         onNewItemClick={handleModelOpen}
+        uploadProps={uploadProps}
         loading={loading}
         dataCount={data?.count}
       />
