@@ -76,6 +76,18 @@ const searchArticleResources = defineMessages({
   enterAtLeastOneFilter: {
     id: 'searchArticleResources.enterAtLeastOneFilter',
     defaultMessage: 'Please enter at least one filter.'
+  },
+  journalName: {
+    id: 'searchArticleResources.journalName',
+    defaultMessage: 'Journal Name'
+  },
+  journalAbbreviationName: {
+    id: 'searchArticleResources.journalAbbreviationName',
+    defaultMessage: 'Journal Abn.'
+  },
+  categoryName: {
+    id: 'searchArticleResources.categoryName',
+    defaultMessage: 'Category Name'
   }
 });
 

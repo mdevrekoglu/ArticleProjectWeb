@@ -55,10 +55,6 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         {intl.formatMessage(layoutResources.article)}
       </Menu.Item>
 
-      <Menu.Item key='researcherSearch' icon={<UserOutlined />}>
-        {intl.formatMessage(layoutResources.researcher)}
-      </Menu.Item>
-
       <Menu.Item
         key='search-collaborator'
         icon={<SearchOutlined />}

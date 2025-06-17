@@ -88,6 +88,38 @@ const commonResources = defineMessages({
   uploadFailed: {
     id: 'commonResources.uploadFailed',
     defaultMessage: 'Upload Failed'
+  },
+  returnBack: {
+    id: 'commonResources.returnBack',
+    defaultMessage: 'Return Back'
+  },
+  isActive: {
+    id: 'commonResources.isActive',
+    defaultMessage: 'Is Active'
+  },
+  yes: {
+    id: 'commonResources.yes',
+    defaultMessage: 'Yes'
+  },
+  no: {
+    id: 'commonResources.no',
+    defaultMessage: 'No'
+  },
+  true: {
+    id: 'commonResources.true',
+    defaultMessage: 'True'
+  },
+  false: {
+    id: 'commonResources.false',
+    defaultMessage: 'False'
+  },
+  staffTitle: {
+    id: 'commonResources.staffTitle',
+    defaultMessage: 'Staff Title'
+  },
+  position: {
+    id: 'commonResources.position',
+    defaultMessage: 'Position'
   }
 });
 
