@@ -5,7 +5,7 @@ export interface collaboratorSearchModel {
 }
 
 export interface collaboratorDataModel {
-  id: number;
+  id?: number;
   name: string;
   wosId: string;
   similarity: number;

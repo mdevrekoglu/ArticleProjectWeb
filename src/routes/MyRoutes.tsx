@@ -70,7 +70,10 @@ const MyRoutes = () => {
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='/user-panel' element={<UserPanel />} />
           <Route path='/researcher' element={<Researcher />} />
-          <Route path='/researcher/detail/:id' element={<ResearcherDetail />} />
+          <Route
+            path='/researcher/detail/:id/:origin'
+            element={<ResearcherDetail />}
+          />
           <Route path='/search-article' element={<SearchArticle />} />
           <Route path='/journal' element={<Journal />} />
           <Route path='/user-notification' element={<UserNotification />} />

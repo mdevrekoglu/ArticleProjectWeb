@@ -25,7 +25,7 @@ const { Title } = Typography;
 const { useToken } = theme;
 
 const ResearcherDetail = () => {
-  const { id } = useParams();
+  const { id, origin } = useParams();
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ const ResearcherDetail = () => {
   }, [id, intl]);
 
   const handleGoBack = () => {
-    navigate('/researcher', { state: location.state });
+    navigate(`/${origin}`, { state: location.state });
   };
 
   const renderAvatar = (imageBase64: string | undefined) => {

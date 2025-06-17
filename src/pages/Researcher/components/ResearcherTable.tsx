@@ -41,19 +41,19 @@ const ResearcherTable: React.FC<ResearcherTableProps> = ({
               onClick={() => onOpenModal && onOpenModal(record.id)}
             />
           </Permission>
+          <span>{text}</span>
           <Popover
             content={intl.formatMessage(researcherResources.researcherDetail)}
           >
             <Button
               type='link'
               icon={<InfoCircleOutlined />}
-              style={{ marginRight: '5px' }}
+              style={{ marginLeft: '5px' }}
               onClick={() =>
                 onRedirectToDetail && onRedirectToDetail(record.id)
               }
             />
           </Popover>
-          <span>{text}</span>
         </div>
       )
     },
