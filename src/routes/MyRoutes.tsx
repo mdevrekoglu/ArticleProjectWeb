@@ -19,6 +19,7 @@ import Journal from '../pages/Journal/Journal';
 import Department from '../pages/Department/Department';
 import UserNotification from '../pages/UserNotification/UserNotification';
 import Notification from '../pages/Notification/Notification';
+import ResearcherDetail from '../pages/ResearcherDetail/ResearcherDetail';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -69,6 +70,7 @@ const MyRoutes = () => {
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='/user-panel' element={<UserPanel />} />
           <Route path='/researcher' element={<Researcher />} />
+          <Route path='/researcher/detail/:id' element={<ResearcherDetail />} />
           <Route path='/search-article' element={<SearchArticle />} />
           <Route path='/journal' element={<Journal />} />
           <Route path='/user-notification' element={<UserNotification />} />

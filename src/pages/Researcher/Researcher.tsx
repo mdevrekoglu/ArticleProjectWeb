@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Button, Form, notification } from 'antd';
 import { researcherDataListModel, researcherSearchInputModel } from './models';
@@ -10,10 +10,13 @@ import ResearcherFilter from './components/ResearcherFilter';
 import ResearcherTable from './components/ResearcherTable';
 import { SyncOutlined } from '@ant-design/icons';
 import ResearcherFetchModal from './components/ResearcherFetchModal';
+import { useLocation, useNavigate } from 'react-router';
 
 const Researcher: React.FC = () => {
   const intl = useIntl();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<researcherDataListModel>();
 
@@ -34,6 +37,33 @@ const Researcher: React.FC = () => {
     field?: string;
     order?: 'ascend' | 'descend';
   }>({});
+
+  useEffect(() => {
+    if (location.state?.filters) {
+      form.setFieldsValue(location.state.filters);
+      setPagination(location.state.pagination);
+      setSorter(location.state.sorter);
+      fetchData(
+        location.state.pagination.current,
+        location.state.pagination.pageSize,
+        location.state.sorter.field,
+        location.state.sorter.order
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Researcher sayfasında
+  const handleRedirectToDetail = (id: number) => {
+    const currentFilters = form.getFieldsValue();
+    const stateToPass = {
+      filters: currentFilters,
+      pagination,
+      sorter
+    };
+
+    navigate(`/researcher/detail/${id}`, { state: stateToPass });
+  };
 
   const fetchData = async (
     page = 1,
@@ -163,6 +193,7 @@ const Researcher: React.FC = () => {
           total: pagination.total,
           showSizeChanger: true
         }}
+        onRedirectToDetail={handleRedirectToDetail}
         loading={loading}
       />
 
