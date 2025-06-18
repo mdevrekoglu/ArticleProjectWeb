@@ -9,7 +9,7 @@ import searchArticleResources from '../messages';
 interface SearchArticleTableProps {
   data?: articleDataListModel;
   onSortChange?: TableProps<articleDataModel>['onChange'];
-  pagination: TableProps<articleDataModel>['pagination'];
+  pagination?: TableProps<articleDataModel>['pagination'];
   loading?: boolean;
 }
 
@@ -54,10 +54,28 @@ const SearchArticleTable: React.FC<SearchArticleTableProps> = ({
       show: false
     },
     {
+      key: 'journalName',
+      title: intl.formatMessage(searchArticleResources.journalName),
+      dataIndex: 'journalName',
+      show: false
+    },
+    {
+      key: 'journalAbbreviationName',
+      title: intl.formatMessage(searchArticleResources.journalAbbreviationName),
+      dataIndex: 'journalAbbreviationName',
+      show: true
+    },
+    {
+      key: 'categoryName',
+      title: intl.formatMessage(searchArticleResources.categoryName),
+      dataIndex: 'categoryName',
+      show: true
+    },
+    {
       key: 'issn',
       title: intl.formatMessage(searchArticleResources.issn),
       dataIndex: 'issn',
-      show: true
+      show: false
     },
     {
       key: 'eissn',
@@ -87,7 +105,7 @@ const SearchArticleTable: React.FC<SearchArticleTableProps> = ({
       key: 'coverDate',
       title: intl.formatMessage(searchArticleResources.coverDate),
       dataIndex: 'coverDate',
-      show: true
+      show: false
     },
     {
       key: 'doi',
@@ -99,7 +117,7 @@ const SearchArticleTable: React.FC<SearchArticleTableProps> = ({
       key: 'citedByCount',
       title: intl.formatMessage(searchArticleResources.citedByCount),
       dataIndex: 'citedByCount',
-      show: true
+      show: false
     },
     {
       key: 'affiliationName',

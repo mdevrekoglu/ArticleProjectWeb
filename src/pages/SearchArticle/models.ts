@@ -24,6 +24,11 @@ export interface articleDataModel {
   doi: string;
   citedByCount: number;
   affiliationName: string;
+
+  journalId?: number;
+  journalName?: string;
+  journalAbbreviationName?: string;
+  categoryName?: string;
 }
 
 export interface articleDataListModel extends baseListModel {

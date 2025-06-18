@@ -80,6 +80,10 @@ const researcherResources = defineMessages({
   updateUserViaScopus: {
     id: 'researcherResources.updateUserViaScopus',
     defaultMessage: 'User Via Scopus'
+  },
+  researcherDetail: {
+    id: 'researcherResources.researcherDetail',
+    defaultMessage: 'Researcher Detail'
   }
 });
 

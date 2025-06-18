@@ -62,7 +62,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
   onNewItemClick,
   uploadProps,
   extraButton,
-  extraButtonPermission
+  extraButtonPermission = ['Admin', 'Student', 'Lecturer']
 }) => {
   const intl = useIntl();
   const { token } = useToken();
@@ -110,9 +110,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
         )}
 
         {extraButton && (
-          <Permission roles={extraButtonPermission || ['Admin']}>
-            {extraButton}
-          </Permission>
+          <Permission roles={extraButtonPermission}>{extraButton}</Permission>
         )}
 
         <Permission roles={['Admin']}>

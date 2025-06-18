@@ -1,9 +1,11 @@
 import React from 'react';
 import { researcherDataListModel, researcherDataModel } from '../models';
-import { Table, TableProps } from 'antd';
+import { Button, Popover, Table, TableProps } from 'antd';
 import { useIntl } from 'react-intl';
 import researcherResources from '../messages';
 import affiliationResources from '../../Affiliation/messages';
+import Permission from '../../../components/Permission/Permission';
+import { EditOutlined, InfoCircleOutlined } from '@ant-design/icons';
 
 interface ResearcherTableProps {
   data?: researcherDataListModel;
@@ -11,6 +13,7 @@ interface ResearcherTableProps {
   pagination: TableProps<researcherDataModel>['pagination'];
   loading?: boolean;
   onOpenModal?: (id: number) => void;
+  onRedirectToDetail?: (id: number) => void;
 }
 
 const ResearcherTable: React.FC<ResearcherTableProps> = ({
@@ -18,7 +21,8 @@ const ResearcherTable: React.FC<ResearcherTableProps> = ({
   onSortChange,
   pagination,
   loading,
-  onOpenModal
+  onOpenModal,
+  onRedirectToDetail
 }) => {
   const intl = useIntl();
 
@@ -27,7 +31,31 @@ const ResearcherTable: React.FC<ResearcherTableProps> = ({
       title: intl.formatMessage(researcherResources.firstName),
       dataIndex: 'firstName',
       key: 'firstName',
-      sorter: true
+      sorter: true,
+      render: (text: string, record: researcherDataModel) => (
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Permission roles={['Admin']}>
+            <Button
+              type='link'
+              icon={<EditOutlined />}
+              onClick={() => onOpenModal && onOpenModal(record.id)}
+            />
+          </Permission>
+          <Popover
+            content={intl.formatMessage(researcherResources.researcherDetail)}
+          >
+            <Button
+              type='link'
+              icon={<InfoCircleOutlined />}
+              style={{ marginRight: '5px' }}
+              onClick={() =>
+                onRedirectToDetail && onRedirectToDetail(record.id)
+              }
+            />
+          </Popover>
+          <span>{text}</span>
+        </div>
+      )
     },
     {
       title: intl.formatMessage(researcherResources.lastName),
