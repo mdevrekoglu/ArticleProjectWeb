@@ -19,9 +19,11 @@ import Journal from '../pages/Journal/Journal';
 import Department from '../pages/Department/Department';
 import UserNotification from '../pages/UserNotification/UserNotification';
 import Notification from '../pages/Notification/Notification';
+import MajorDiscipline from '../pages/MajorDiscipline/MajorDiscipline';
 import ResearcherDetail from '../pages/ResearcherDetail/ResearcherDetail';
 import GeneralReport from '../pages/GeneralReport/GeneralReport';
 import ResearcherReport from '../pages/ResearcherReport/ResearcherReport';
+
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -69,6 +71,7 @@ const MyRoutes = () => {
           <Route path='/affiliation' element={<Affiliation />} />
           <Route path='/faculty' element={<Faculty />} />
           <Route path='/department' element={<Department />} />
+          <Route path='/majorDiscipline' element={<MajorDiscipline />} />
           <Route path='/search-collaborator' element={<SearchCollaborator />} />
           <Route path='/user-panel' element={<UserPanel />} />
           <Route path='/researcher' element={<Researcher />} />
