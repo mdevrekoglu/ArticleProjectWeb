@@ -1,16 +1,16 @@
-import { Button, Table, TableProps } from "antd";
-import { journalDataListModel, journalDataModel } from "../models";
-import { useIntl } from "react-intl";
-import journalResources from "../messages";
-import Permission from "../../../components/Permission/Permission";
-import { EditOutlined } from "@ant-design/icons";
+import { Button, Table, TableProps } from 'antd';
+import { journalDataListModel, journalDataModel } from '../models';
+import { useIntl } from 'react-intl';
+import journalResources from '../messages';
+import Permission from '../../../components/Permission/Permission';
+import { EditOutlined } from '@ant-design/icons';
 
 interface JournalTableProps {
   data?: journalDataListModel;
   onSortChange?: TableProps<journalDataModel>['onChange'];
   pagination: TableProps<journalDataModel>['pagination'];
   loading?: boolean;
-  onOpenModal?: (id: number) => void; // Callback to open the modal with ID
+  onOpenModal?: (id: number) => void;
 }
 
 const JournalTable: React.FC<JournalTableProps> = ({
@@ -104,6 +104,7 @@ const JournalTable: React.FC<JournalTableProps> = ({
       columns={columns}
       bordered
       rowKey='id'
+      size='small'
       pagination={pagination}
       onChange={onSortChange}
       loading={loading}
@@ -112,4 +113,3 @@ const JournalTable: React.FC<JournalTableProps> = ({
 };
 
 export default JournalTable;
-

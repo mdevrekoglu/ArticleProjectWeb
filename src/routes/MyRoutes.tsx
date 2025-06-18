@@ -20,6 +20,8 @@ import Department from '../pages/Department/Department';
 import UserNotification from '../pages/UserNotification/UserNotification';
 import Notification from '../pages/Notification/Notification';
 import ResearcherDetail from '../pages/ResearcherDetail/ResearcherDetail';
+import GeneralReport from '../pages/GeneralReport/GeneralReport';
+import ResearcherReport from '../pages/ResearcherReport/ResearcherReport';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -78,6 +80,8 @@ const MyRoutes = () => {
           <Route path='/journal' element={<Journal />} />
           <Route path='/user-notification' element={<UserNotification />} />
           <Route path='/notification' element={<Notification />} />
+          <Route path='/general-report' element={<GeneralReport />} />
+          <Route path='/researcher-report' element={<ResearcherReport />} />
         </Route>
       </Route>
 

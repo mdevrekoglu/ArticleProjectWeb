@@ -5,6 +5,7 @@ import {
   DesktopOutlined,
   FileSearchOutlined,
   HomeOutlined,
+  LineChartOutlined,
   LogoutOutlined,
   RightCircleOutlined,
   SearchOutlined,
@@ -152,6 +153,30 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
       )}
       {/* </Permission> */}
 
+      {user && user.roles.includes('Admin') && (
+        <Menu.SubMenu
+          key='reportPanel'
+          icon={<LineChartOutlined />}
+          title={intl.formatMessage(layoutResources.reportPanel)}
+        >
+          <Menu.Item
+            key='generalReport'
+            icon={<RightCircleOutlined />}
+            onClick={() => navigate('/general-report')}
+          >
+            {intl.formatMessage(layoutResources.generalReport)}
+          </Menu.Item>
+
+          {/* <Menu.Item
+            key='researcherReport'
+            icon={<RightCircleOutlined />}
+            onClick={() => navigate('/researcher-report')}
+          >
+            {intl.formatMessage(layoutResources.researcherReport)}
+          </Menu.Item> */}
+        </Menu.SubMenu>
+      )}
+
       <Menu.SubMenu
         key='settings'
         icon={<SettingOutlined />}
@@ -169,10 +194,6 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
           {intl.formatMessage(layoutResources.logout)}
         </Menu.Item>
       </Menu.SubMenu>
-
-      {/* <div className='toggle-theme-btn-container'>
-        <ToggleThemeSwitch />
-      </div> */}
     </Menu>
   );
 };

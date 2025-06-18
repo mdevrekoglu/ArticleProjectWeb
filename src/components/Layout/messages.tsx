@@ -65,6 +65,18 @@ const layoutResources = defineMessages({
   logout: {
     id: 'layoutResources.logout',
     defaultMessage: 'Logout'
+  },
+  reportPanel: {
+    id: 'layoutResources.reportPanel',
+    defaultMessage: 'Report Panel'
+  },
+  researcherReport: {
+    id: 'layoutResources.researcherReport',
+    defaultMessage: 'Researcher R.'
+  },
+  generalReport: {
+    id: 'layoutResources.generalReport',
+    defaultMessage: 'General R.'
   }
 });
 
