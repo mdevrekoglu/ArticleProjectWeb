@@ -101,6 +101,14 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
         </Menu.Item>
 
         <Menu.Item
+          key='majorDiscipline'
+          icon={<RightCircleOutlined />}
+          onClick={() => navigate('/majorDiscipline')}
+        >
+          {intl.formatMessage(layoutResources.majorDiscipline)}
+        </Menu.Item>
+
+        <Menu.Item
           key='researcher'
           icon={<RightCircleOutlined />}
           onClick={() => navigate('/researcher')}
