@@ -34,6 +34,10 @@ const layoutResources = defineMessages({
     id: 'layoutResources.department',
     defaultMessage: 'Department'
   },
+  majorDiscipline: {
+    id: 'layoutResources.majorDiscipline',
+    defaultMessage: 'Major Discipline'
+  },
   faculty: {
     id: 'layoutResources.faculty',
     defaultMessage: 'Faculty'
