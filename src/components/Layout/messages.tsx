@@ -78,9 +78,13 @@ const layoutResources = defineMessages({
     id: 'layoutResources.researcherReport',
     defaultMessage: 'Researcher R.'
   },
-  generalReport: {
-    id: 'layoutResources.generalReport',
-    defaultMessage: 'General R.'
+  azureFiles: {
+    id: 'layoutResources.azureFiles',
+    defaultMessage: 'Azure Files'
+  },
+  generateReport: {
+    id: 'layoutResources.generateReport',
+    defaultMessage: 'Generate R.'
   }
 });
 

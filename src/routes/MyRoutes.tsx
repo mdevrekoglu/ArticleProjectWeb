@@ -21,9 +21,9 @@ import UserNotification from '../pages/UserNotification/UserNotification';
 import Notification from '../pages/Notification/Notification';
 import MajorDiscipline from '../pages/MajorDiscipline/MajorDiscipline';
 import ResearcherDetail from '../pages/ResearcherDetail/ResearcherDetail';
-import GeneralReport from '../pages/GeneralReport/GeneralReport';
 import ResearcherReport from '../pages/ResearcherReport/ResearcherReport';
-
+import AzureFiles from '../pages/AzureFiles/AzureFiles';
+import GenerateReport from '../pages/GenerateReport/GenerateReport';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -83,8 +83,9 @@ const MyRoutes = () => {
           <Route path='/journal' element={<Journal />} />
           <Route path='/user-notification' element={<UserNotification />} />
           <Route path='/notification' element={<Notification />} />
-          <Route path='/general-report' element={<GeneralReport />} />
+          <Route path='/generate-report' element={<GenerateReport />} />
           <Route path='/researcher-report' element={<ResearcherReport />} />
+          <Route path='/azure-files' element={<AzureFiles />} />
         </Route>
       </Route>
 

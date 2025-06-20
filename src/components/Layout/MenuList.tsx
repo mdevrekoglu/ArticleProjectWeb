@@ -168,11 +168,19 @@ const MenuList: React.FC<MenuListProps> = ({ collapsed }) => {
           title={intl.formatMessage(layoutResources.reportPanel)}
         >
           <Menu.Item
-            key='generalReport'
+            key='azureFiles'
             icon={<RightCircleOutlined />}
-            onClick={() => navigate('/general-report')}
+            onClick={() => navigate('/azure-files')}
           >
-            {intl.formatMessage(layoutResources.generalReport)}
+            {intl.formatMessage(layoutResources.azureFiles)}
+          </Menu.Item>
+
+          <Menu.Item
+            key='generateReport'
+            icon={<RightCircleOutlined />}
+            onClick={() => navigate('/generate-report')}
+          >
+            {intl.formatMessage(layoutResources.generateReport)}
           </Menu.Item>
 
           {/* <Menu.Item
