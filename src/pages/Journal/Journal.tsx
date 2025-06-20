@@ -86,6 +86,7 @@ const Journal: React.FC = () => {
   const uploadProps: UploadProps = {
     accept: '.xlsx',
     showUploadList: false,
+    maxCount: 1,
     beforeUpload: file => {
       const isExcel =
         file.type ===
@@ -174,6 +175,7 @@ const Journal: React.FC = () => {
         onClearClick={handleClear}
         onNewItemClick={handleModelOpen}
         uploadProps={uploadProps}
+        uploadName={intl.formatMessage(commonResources.uploadExcel)}
         loading={loading}
         dataCount={data?.count}
       />

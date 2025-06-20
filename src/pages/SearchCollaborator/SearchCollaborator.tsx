@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DataPageHeader from '../../components/DataPageItems/DataPageHeader';
 import { useIntl } from 'react-intl';
 import searchCollaboratorResources from './messages';
@@ -8,12 +8,25 @@ import ApiService from '../../modules/ApiService';
 import commonResources from '../../messages';
 import SearchCollaboratorFilter from './components/SearchCollaboratorFilter';
 import SearchCollaboratorTable from './components/SearchCollaboratorTable';
+import { useLocation, useNavigate } from 'react-router';
 
 const SearchCollaborator = () => {
   const intl = useIntl();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<collaboratorDataListModel>();
+
+  useEffect(() => {
+    if (location.state?.filters) {
+      form.setFieldsValue(location.state.filters);
+    }
+    if (location.state?.data) {
+      setData(location.state.data);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchData = async () => {
     setLoading(true);
@@ -66,6 +79,21 @@ const SearchCollaborator = () => {
     setData(undefined);
   };
 
+  const handleRedirectToDetail = (id?: number) => {
+    if (id) {
+      const currentFilters = form.getFieldsValue();
+      const stateToPass = {
+        filters: currentFilters,
+        data: data,
+        origin: location.pathname
+      };
+
+      navigate(`/researcher/detail/${id}${location.pathname}`, {
+        state: stateToPass
+      });
+    }
+  };
+
   return (
     <div>
       <DataPageHeader
@@ -80,7 +108,10 @@ const SearchCollaborator = () => {
 
       <SearchCollaboratorFilter form={form} />
 
-      <SearchCollaboratorTable data={data} />
+      <SearchCollaboratorTable
+        data={data}
+        onRedirectToDetail={handleRedirectToDetail}
+      />
     </div>
   );
 };

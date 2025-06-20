@@ -69,6 +69,22 @@ const layoutResources = defineMessages({
   logout: {
     id: 'layoutResources.logout',
     defaultMessage: 'Logout'
+  },
+  reportPanel: {
+    id: 'layoutResources.reportPanel',
+    defaultMessage: 'Report Panel'
+  },
+  researcherReport: {
+    id: 'layoutResources.researcherReport',
+    defaultMessage: 'Researcher R.'
+  },
+  azureFiles: {
+    id: 'layoutResources.azureFiles',
+    defaultMessage: 'Azure Files'
+  },
+  generateReport: {
+    id: 'layoutResources.generateReport',
+    defaultMessage: 'Generate R.'
   }
 });
 

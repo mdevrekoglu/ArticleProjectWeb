@@ -53,16 +53,18 @@ const Researcher: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Researcher sayfasında
   const handleRedirectToDetail = (id: number) => {
     const currentFilters = form.getFieldsValue();
     const stateToPass = {
       filters: currentFilters,
       pagination,
-      sorter
+      sorter,
+      origin: location.pathname
     };
 
-    navigate(`/researcher/detail/${id}`, { state: stateToPass });
+    navigate(`/researcher/detail/${id}${location.pathname}`, {
+      state: stateToPass
+    });
   };
 
   const fetchData = async (

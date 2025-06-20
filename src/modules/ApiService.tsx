@@ -149,6 +149,36 @@ class ApiService {
       throw error;
     }
   }
+
+  async UseGetBlob<TRequest>(
+    url: string,
+    params: TRequest
+  ): Promise<{ blob: Blob; fileName: string }> {
+    try {
+      const response = await this.axiosInstance.get(url, {
+        params,
+        responseType: 'blob'
+      });
+
+      let fileName = 'downloaded-file';
+      const contentDisposition = response.headers['content-disposition'];
+      const match = contentDisposition?.match(
+        /filename\*?=(?:UTF-8'')?["']?([^;\r\n"']+)["']?/i
+      );
+      if (match?.[1]) {
+        fileName = decodeURIComponent(match[1]);
+      }
+
+      return { blob: response.data, fileName };
+    } catch (error) {
+      notification.error({
+        message: 'İndirme hatası',
+        description: 'Dosya indirilemedi',
+        placement: 'topRight'
+      });
+      throw error;
+    }
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

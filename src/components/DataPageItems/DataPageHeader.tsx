@@ -25,10 +25,6 @@ const messages = defineMessages({
     id: 'dataPageHeader.newItem',
     defaultMessage: 'New Item'
   },
-  importExcel: {
-    id: 'dataPageHeader.importExcel',
-    defaultMessage: 'Import Excel'
-  },
   clear: {
     id: 'dataPageHeader.clear',
     defaultMessage: 'Clear'
@@ -47,6 +43,7 @@ interface DataPageHeaderProps {
   onClearClick?: () => void;
   onNewItemClick?: (id?: any) => void;
   uploadProps?: UploadProps;
+  uploadName?: string;
   extraButton?: React.ReactElement;
   extraButtonPermission?: string[];
 }
@@ -61,6 +58,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
   onClearClick,
   onNewItemClick,
   uploadProps,
+  uploadName,
   extraButton,
   extraButtonPermission = ['Admin', 'Student', 'Lecturer']
 }) => {
@@ -127,7 +125,7 @@ const DataPageHeader: React.FC<DataPageHeaderProps> = ({
                     padding: '0 12px'
                   }}
                 >
-                  {intl.formatMessage(messages.importExcel)}
+                  {uploadName}
                 </Button>
               </Upload>
             </div>

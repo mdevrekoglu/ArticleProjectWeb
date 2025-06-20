@@ -37,7 +37,7 @@ const journalResources = defineMessages({
     id: 'journalResources.enterISSN',
     defaultMessage: 'Enter ISSN'
   },
-   EISSN: {
+  EISSN: {
     id: 'journalResources.EISSN',
     defaultMessage: 'EISSN'
   },
@@ -45,7 +45,7 @@ const journalResources = defineMessages({
     id: 'journalResources.enterEISSN',
     defaultMessage: 'Enter EISSN'
   },
-   JIF: {
+  JIF: {
     id: 'journalResources.JIF',
     defaultMessage: 'JIF'
   },
@@ -63,7 +63,7 @@ const journalResources = defineMessages({
   },
   CategoryName: {
     id: 'journalResources.CategoryName',
-    defaultMessage: 'CategoryName'
+    defaultMessage: 'Category N.'
   },
   enterCategoryName: {
     id: 'journalResources.enterCategoryName',
@@ -101,7 +101,6 @@ const journalResources = defineMessages({
     id: 'journalResources.enterYear',
     defaultMessage: 'Enter Year'
   }
-  
 });
 
 export default journalResources;

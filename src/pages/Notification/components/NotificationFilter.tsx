@@ -1,10 +1,11 @@
-import { Col, Divider, Form, Input, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import DataPageFormItem from '../../../components/DataPageItems/DataPageFormItem';
 import notificationResources from '../messages';
 import IsActiveSelect from '../../../components/FilterComponents/IsActiveSelect';
 import CustomDatePicker from '../../../components/FilterComponents/CustomDatePicker';
+import CustomDivider from '../../../components/DataPageItems/CustomDivider';
 
 interface NotificationFilterProps {
   form: any;
@@ -35,7 +36,7 @@ const NotificationFilter: React.FC<NotificationFilterProps> = ({ form }) => {
           <IsActiveSelect />
         </Col>
       </Row>
-      <Divider style={{ marginTop: '8px', marginBottom: '8px' }}></Divider>
+      <CustomDivider />
     </Form>
   );
 };

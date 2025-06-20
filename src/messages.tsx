@@ -120,6 +120,30 @@ const commonResources = defineMessages({
   position: {
     id: 'commonResources.position',
     defaultMessage: 'Position'
+  },
+  userName: {
+    id: 'commonResources.userName',
+    defaultMessage: 'User Name'
+  },
+  success: {
+    id: 'commonResources.success',
+    defaultMessage: 'Success'
+  },
+  error: {
+    id: 'commonResources.error',
+    defaultMessage: 'Error'
+  },
+  download: {
+    id: 'commonResources.download',
+    defaultMessage: 'Download'
+  },
+  uploadExcel: {
+    id: 'commonResources.uploadExcel',
+    defaultMessage: 'Upload Excel'
+  },
+  uploadFile: {
+    id: 'commonResources.uploadFile',
+    defaultMessage: 'Upload File'
   }
 });
 
